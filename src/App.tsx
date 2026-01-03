@@ -1,5 +1,12 @@
+import MultiStepForm from './components/MultiStepForm/MultiStepForm';
+import styles from './App.module.css';
+
 const App = () => {
-  return <h1>Multi-step Form</h1>;
+  return (
+    <main className={styles.root}>
+      <MultiStepForm />
+    </main>
+  );
 };
 
 export default App;

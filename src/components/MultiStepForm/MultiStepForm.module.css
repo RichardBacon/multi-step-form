@@ -1,0 +1,6 @@
+.root {
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  width: 40rem;
+  height: 20rem;
+}
