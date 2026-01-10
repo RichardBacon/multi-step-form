@@ -2,7 +2,7 @@
   display: flex;
   gap: var(--space-sm);
   border-radius: var(--radius-lg);
-  background-color: var(--color-surface);
+  background-color: var(--blue-50);
   padding: var(--space-sm);
   width: 58.75rem;
   height: 37.5rem;

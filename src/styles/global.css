@@ -39,16 +39,36 @@
 
 /* ---------- Base ---------- */
 @layer base {
+  :root {
+    /* Fonts */
+    --font-body:
+      'Ubuntu', system-ui, -apple-system, 'Segoe UI', roboto, arial, sans-serif;
+
+    /* Colors */
+    --blue-950: hsl(213deg 96% 18%);
+    --blue-600: hsl(210deg 100% 50%);
+    --blue-200: hsl(206deg 94% 87%);
+    --blue-100: hsl(210deg 100% 96%);
+    --blue-50: hsl(215deg 100% 98%);
+
+    /* Spacing scale */
+    --space-sm: 1rem;
+    --space-lg: 2rem;
+
+    /* Border radius */
+    --radius-lg: 1rem;
+  }
+
   html {
     font-size: 100%;
   }
 
   body {
-    background-color: var(--color-bg);
+    background-color: var(--blue-100);
     min-height: 100vh;
     min-height: 100dvh;
     line-height: 1.5;
-    color: var(--color-text);
+    color: var(--blue-950);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
   }
@@ -70,7 +90,7 @@
   }
 
   :where(a, button, input, select, textarea):focus-visible {
-    outline: 2px solid var(--color-focus);
+    outline: 2px solid var(--blue-600);
     outline-offset: 2px;
   }
 
@@ -83,54 +103,5 @@
   h6 {
     hyphens: auto;
     overflow-wrap: break-word;
-  }
-}
-
-/* ---------- Theme tokens ---------- */
-@layer base {
-  :root {
-    /* Typography */
-    --font-body:
-      'Ubuntu', system-ui, -apple-system, 'Segoe UI', roboto, arial, sans-serif;
-
-    /* Primary */
-    --blue-950: hsl(213deg 96% 18%);
-    --purple-600: hsl(243deg 100% 62%);
-    --blue-300: hsl(228deg 100% 84%);
-    --blue-200: hsl(206deg 94% 87%);
-    --red-500: hsl(354deg 84% 57%);
-
-    /* Neutral */
-    --grey-500: hsl(231deg 11% 63%);
-    --purple-200: hsl(229deg 24% 87%);
-    --blue-100: hsl(218deg 100% 97%);
-    --blue-50: hsl(231deg 100% 99%);
-    --white: hsl(0deg 100% 100%);
-
-    /* Semantic aliases */
-    --color-bg: var(--blue-100);
-    --color-text: var(--blue-950);
-    --color-text-muted: var(--grey-500);
-    --color-focus: var(--purple-600);
-    --color-primary: var(--purple-600);
-    --color-error: var(--red-500);
-    --color-border: var(--purple-200);
-    --color-surface: var(--blue-50);
-
-    /* Spacing scale */
-    --space-xs: 0.5rem;
-    --space-sm: 1rem;
-    --space-md: 1.5rem;
-    --space-lg: 2rem;
-    --space-xl: 3rem;
-
-    /* Border radius */
-    --radius-sm: 0.25rem;
-    --radius-md: 0.5rem;
-    --radius-lg: 1rem;
-
-    /* Transitions */
-    --transition-fast: 150ms ease-in-out;
-    --transition-base: 250ms ease-in-out;
   }
 }

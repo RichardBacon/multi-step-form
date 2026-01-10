@@ -1,12 +1,11 @@
 .root {
   display: flex;
+  flex: 0 0 17.125rem;
   flex-direction: column;
-  flex-shrink: 0;
   gap: var(--space-lg);
   border-radius: var(--radius-lg);
   background-image: url('/assets/images/bg-sidebar-desktop.svg');
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 2rem;
-  width: 17rem;
+  padding: var(--space-lg);
 }
