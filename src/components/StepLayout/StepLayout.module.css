@@ -2,4 +2,5 @@
   flex: 1;
   border-radius: var(--radius-lg);
   background-color: var(--blue-50);
+  padding: var(--space-lg) var(--space-xl);
 }

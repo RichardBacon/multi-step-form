@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.heading {
+  font-size: 2rem;
+}
+
+.subheading {
+  color: var(--grey);
+  font-size: 1rem;
+}

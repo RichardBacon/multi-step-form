@@ -1,7 +1,12 @@
+import PersonalInfoStep from '../PersonalInfoStep/PersonalInfoStep';
 import styles from './StepLayout.module.css';
 
 const StepLayout = () => {
-  return <div className={styles.root}></div>;
+  return (
+    <div className={styles.root}>
+      <PersonalInfoStep />
+    </div>
+  );
 };
 
 export default StepLayout;
