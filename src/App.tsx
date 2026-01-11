@@ -1,4 +1,4 @@
-import MultiStepForm from './components/MultiStepForm/MultiStepForm';
+import MultiStepForm from './components/wizard/MultiStepForm/MultiStepForm';
 import styles from './App.module.css';
 
 const App = () => {

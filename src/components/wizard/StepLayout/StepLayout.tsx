@@ -1,4 +1,4 @@
-import PersonalInfoStep from '../PersonalInfoStep/PersonalInfoStep';
+import PersonalInfoStep from '../../steps/PersonalInfoStep/PersonalInfoStep';
 import styles from './StepLayout.module.css';
 
 const StepLayout = () => {

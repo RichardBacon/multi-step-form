@@ -1,4 +1,4 @@
-import StepHeader from '../StepHeader/StepHeader';
+import StepHeader from '../../forms/StepHeader/StepHeader';
 
 const PersonalInfoStep = () => {
   return <StepHeader />;
