@@ -1,0 +1,21 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.input {
+  border: 1px solid var(--grey);
+  border-radius: var(--radius-md);
+  padding: var(--space-xs);
+}
+
+.input::placeholder {
+  opacity: 0.5;
+}
