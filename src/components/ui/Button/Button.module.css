@@ -1,0 +1,8 @@
+.root {
+  border-radius: var(--radius-md);
+  background-color: var(--blue-950);
+  width: 8rem;
+  height: 3rem;
+  overflow: hidden;
+  color: var(--blue-50);
+}

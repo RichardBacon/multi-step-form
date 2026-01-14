@@ -1,4 +1,5 @@
 import PersonalInfoForm from '../../forms/PersonalInfoForm/PersonalInfoForm';
+import StepActions from '../../forms/StepActions/StepActions';
 import StepHeader from '../../forms/StepHeader/StepHeader';
 import styles from './PersonalInfoStep.module.css';
 
@@ -7,6 +8,9 @@ const PersonalInfoStep = () => {
     <div className={styles.root}>
       <StepHeader />
       <PersonalInfoForm />
+      <div className={styles.stepActionsContainer}>
+        <StepActions />
+      </div>
     </div>
   );
 };
