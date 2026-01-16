@@ -1,4 +1,9 @@
 .root {
   display: flex;
-  justify-content: right;
+  gap: var(--space-sm);
+  justify-content: flex-end;
+}
+
+.root > *:first-child:not(:last-child) {
+  margin-right: auto;
 }

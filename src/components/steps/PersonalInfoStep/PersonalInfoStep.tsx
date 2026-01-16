@@ -1,6 +1,7 @@
 import PersonalInfoForm from '../../forms/PersonalInfoForm/PersonalInfoForm';
 import StepActions from '../../forms/StepActions/StepActions';
 import StepHeader from '../../forms/StepHeader/StepHeader';
+import Button from '../../ui/Button/Button';
 import styles from './PersonalInfoStep.module.css';
 
 const PersonalInfoStep = () => {
@@ -12,7 +13,9 @@ const PersonalInfoStep = () => {
       />
       <PersonalInfoForm />
       <div className={styles.stepActionsContainer}>
-        <StepActions />
+        <StepActions>
+          <Button variant="primary">Next Step</Button>
+        </StepActions>
       </div>
     </div>
   );

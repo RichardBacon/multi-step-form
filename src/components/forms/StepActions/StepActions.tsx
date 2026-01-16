@@ -1,12 +1,11 @@
-import Button from '../../ui/Button/Button';
+import type { ReactNode } from 'react';
 import styles from './StepActions.module.css';
 
-const StepActions = () => {
-  return (
-    <div className={styles.root}>
-      <Button>Next Step</Button>
-    </div>
-  );
+interface StepActionsProps {
+  children: ReactNode;
+}
+const StepActions = ({ children }: StepActionsProps) => {
+  return <div className={styles.root}>{children}</div>;
 };
 
 export default StepActions;
