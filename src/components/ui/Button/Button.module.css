@@ -6,3 +6,13 @@
   overflow: hidden;
   color: var(--blue-50);
 }
+
+.primary {
+  background-color: var(--blue-950);
+  color: var(--blue-50);
+}
+
+.secondary {
+  background-color: transparent;
+  color: var(--blue-950);
+}
