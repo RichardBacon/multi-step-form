@@ -1,10 +1,16 @@
 import PersonalInfoStep from '../../steps/PersonalInfoStep/PersonalInfoStep';
+import PlanSelectionStep from '../../steps/PlanSelectionStep/PlanSelectionStep';
 import styles from './StepLayout.module.css';
 
-const StepLayout = () => {
+interface StepLayoutProps {
+  currentStep: number;
+}
+
+const StepLayout = ({ currentStep }: StepLayoutProps) => {
   return (
     <div className={styles.root}>
-      <PersonalInfoStep />
+      {currentStep === 1 && <PersonalInfoStep />}
+      {currentStep === 2 && <PlanSelectionStep />}
     </div>
   );
 };

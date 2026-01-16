@@ -20,7 +20,11 @@ const steps = [
   },
 ];
 
-const StepProgress = ({ currentStep = 1 }) => {
+interface StepProgressProps {
+  currentStep: number;
+}
+
+const StepProgress = ({ currentStep }: StepProgressProps) => {
   return (
     <div className={styles.root}>
       {steps.map((step) => (
