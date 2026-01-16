@@ -1,12 +1,15 @@
 import styles from './StepHeader.module.css';
 
-const StepHeader = () => {
+interface StepHeaderProps {
+  heading: string;
+  subheading?: string;
+}
+
+const StepHeader = ({ heading, subheading }: StepHeaderProps) => {
   return (
     <div className={styles.root}>
-      <h1 className={styles.heading}>Personal Info</h1>
-      <p className={styles.subheading}>
-        Please provide your name, email address and phone number.
-      </p>
+      <h1 className={styles.heading}>{heading}</h1>
+      <p className={styles.subheading}>{subheading}</p>
     </div>
   );
 };

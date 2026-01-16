@@ -6,7 +6,10 @@ import styles from './PersonalInfoStep.module.css';
 const PersonalInfoStep = () => {
   return (
     <div className={styles.root}>
-      <StepHeader />
+      <StepHeader
+        heading="Personal Info"
+        subheading="Please provide your name, email address, and phone number."
+      />
       <PersonalInfoForm />
       <div className={styles.stepActionsContainer}>
         <StepActions />
