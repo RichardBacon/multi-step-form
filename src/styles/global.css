@@ -51,6 +51,7 @@
     --blue-100: hsl(210deg 100% 96%);
     --blue-50: hsl(215deg 100% 98%);
     --grey: hsl(231deg 11% 63%);
+    --white: hsl(0deg 0% 100%);
 
     /* Spacing scale */
     --space-xs: 0.5rem;
