@@ -1,0 +1,28 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--grey);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  width: 8.5rem;
+  height: 10rem;
+}
+
+.selected {
+  border: 1px solid var(--blue-950);
+  background-color: var(--blue-50);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 700;
+}
+
+.price {
+  color: var(--grey);
+}
