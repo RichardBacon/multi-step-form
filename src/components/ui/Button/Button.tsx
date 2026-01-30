@@ -4,7 +4,7 @@ import styles from './Button.module.css';
 
 interface ButtonProps {
   children: ReactNode;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'tertiary';
 }
 const Button = ({ children, variant = 'primary' }: ButtonProps) => {
   return (

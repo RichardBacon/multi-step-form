@@ -16,3 +16,12 @@
   background-color: transparent;
   color: var(--blue-950);
 }
+
+.tertiary {
+  background-color: transparent;
+  width: fit-content;
+  height: fit-content;
+  text-decoration: underline var(--grey) 2px;
+  color: var(--grey);
+  font-weight: 400;
+}
