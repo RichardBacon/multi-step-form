@@ -1,3 +1,4 @@
+import AddOnSelector from '../../forms/AddOnSelector/AddOnSelector';
 import StepActions from '../../forms/StepActions/StepActions';
 import StepHeader from '../../forms/StepHeader/StepHeader';
 import Button from '../../ui/Button/Button';
@@ -10,6 +11,7 @@ const AddOnSelectionStep = () => {
         heading="Pick add-ons"
         subheading="Add-ons help enhance your gaming experience."
       />
+      <AddOnSelector />
       <div className={styles.stepActionsContainer}>
         <StepActions>
           <Button variant="secondary">Go Back</Button>
