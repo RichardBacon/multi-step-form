@@ -2,6 +2,7 @@ import AddOnSelectionStep from '../../steps/AddOnSelectionStep/AddOnSelectionSte
 import PersonalInfoStep from '../../steps/PersonalInfoStep/PersonalInfoStep';
 import PlanSelectionStep from '../../steps/PlanSelectionStep/PlanSelectionStep';
 import SummaryStep from '../../steps/SummaryStep/SummaryStep';
+import ThankYouStep from '../../steps/ThankYouStep/ThankYouStep';
 import styles from './StepLayout.module.css';
 
 interface StepLayoutProps {
@@ -15,6 +16,7 @@ const StepLayout = ({ currentStep }: StepLayoutProps) => {
       {currentStep === 2 && <PlanSelectionStep />}
       {currentStep === 3 && <AddOnSelectionStep />}
       {currentStep === 4 && <SummaryStep />}
+      {currentStep === 5 && <ThankYouStep />}
     </div>
   );
 };
