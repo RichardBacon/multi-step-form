@@ -1,19 +1,15 @@
-import PlanSelector from '../../forms/PlanSelector/PlanSelector';
 import StepActions from '../../forms/StepActions/StepActions';
 import StepHeader from '../../forms/StepHeader/StepHeader';
 import Button from '../../ui/Button/Button';
-import Toggle from '../../ui/Toggle/Toggle';
-import styles from './PlanSelectionStep.module.css';
+import styles from './AddOnSelectionStep.module.css';
 
-const PlanSelectionStep = () => {
+const AddOnSelectionStep = () => {
   return (
     <div className={styles.root}>
       <StepHeader
-        heading="Select your plan"
-        subheading="You have the option of monthly or yearly billing."
+        heading="Pick add-ons"
+        subheading="Add-ons help enhance your gaming experience."
       />
-      <PlanSelector />
-      <Toggle leftLabel="Monthly" rightLabel="Yearly" activeOption="left" />
       <div className={styles.stepActionsContainer}>
         <StepActions>
           <Button variant="secondary">Go Back</Button>
@@ -24,4 +20,4 @@ const PlanSelectionStep = () => {
   );
 };
 
-export default PlanSelectionStep;
+export default AddOnSelectionStep;
