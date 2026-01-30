@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-sm);
+  color: var(--grey);
+}
+
+.total {
+  color: var(--blue-600);
+  font-weight: 700;
+}

@@ -2,6 +2,7 @@ import StepActions from '../../forms/StepActions/StepActions';
 import StepHeader from '../../forms/StepHeader/StepHeader';
 import SummaryContent from '../../forms/SummaryContent/SummaryContent';
 import Button from '../../ui/Button/Button';
+import TotalRow from '../../ui/TotalRow/TotalRow';
 import styles from './SummaryStep.module.css';
 
 const SummaryStep = () => {
@@ -12,6 +13,7 @@ const SummaryStep = () => {
         subheading="Double check everything looks OK before confirming."
       />
       <SummaryContent />
+      <TotalRow />
       <div className={styles.stepActionsContainer}>
         <StepActions>
           <Button variant="secondary">Go Back</Button>
