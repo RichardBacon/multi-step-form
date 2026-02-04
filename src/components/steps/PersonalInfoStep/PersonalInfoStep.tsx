@@ -1,7 +1,7 @@
-import PersonalInfoForm from '../../forms/PersonalInfoForm/PersonalInfoForm';
-import StepActions from '../../forms/StepActions/StepActions';
-import StepHeader from '../../forms/StepHeader/StepHeader';
-import Button from '../../ui/Button/Button';
+import PersonalInfoForm from '../../shared/PersonalInfoForm/PersonalInfoForm';
+import StepActions from '../../shared/StepActions/StepActions';
+import StepHeader from '../../shared/StepHeader/StepHeader';
+import Button from '../../shared/Button/Button';
 import styles from './PersonalInfoStep.module.css';
 
 const PersonalInfoStep = () => {

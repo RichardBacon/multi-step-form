@@ -1,4 +1,4 @@
-import Button from '../../ui/Button/Button';
+import Button from '../Button/Button';
 import styles from './SummaryContent.module.css';
 
 const SummaryContent = () => {

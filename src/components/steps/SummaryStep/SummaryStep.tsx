@@ -1,8 +1,8 @@
-import StepActions from '../../forms/StepActions/StepActions';
-import StepHeader from '../../forms/StepHeader/StepHeader';
-import SummaryContent from '../../forms/SummaryContent/SummaryContent';
-import Button from '../../ui/Button/Button';
-import TotalRow from '../../ui/TotalRow/TotalRow';
+import StepActions from '../../shared/StepActions/StepActions';
+import StepHeader from '../../shared/StepHeader/StepHeader';
+import SummaryContent from '../../shared/SummaryContent/SummaryContent';
+import Button from '../../shared/Button/Button';
+import TotalRow from '../../shared/TotalRow/TotalRow';
 import styles from './SummaryStep.module.css';
 
 const SummaryStep = () => {

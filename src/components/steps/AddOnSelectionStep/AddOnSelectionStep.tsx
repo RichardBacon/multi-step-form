@@ -1,7 +1,7 @@
-import AddOnSelector from '../../forms/AddOnSelector/AddOnSelector';
-import StepActions from '../../forms/StepActions/StepActions';
-import StepHeader from '../../forms/StepHeader/StepHeader';
-import Button from '../../ui/Button/Button';
+import AddOnSelector from '../../shared/AddOnSelector/AddOnSelector';
+import StepActions from '../../shared/StepActions/StepActions';
+import StepHeader from '../../shared/StepHeader/StepHeader';
+import Button from '../../shared/Button/Button';
 import styles from './AddOnSelectionStep.module.css';
 
 const AddOnSelectionStep = () => {

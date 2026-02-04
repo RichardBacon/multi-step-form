@@ -1,4 +1,4 @@
-import StepHeader from '../../forms/StepHeader/StepHeader';
+import StepHeader from '../../shared/StepHeader/StepHeader';
 import styles from './ThankYouStep.module.css';
 
 const ThankYouStep = () => {
