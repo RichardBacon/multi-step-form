@@ -1,6 +1,12 @@
 .root {
-  flex: 1;
+  margin: -4.5rem var(--space-sm) var(--space-sm) var(--space-sm);
   border-radius: var(--radius-lg);
   background-color: var(--white);
   padding: var(--space-lg) var(--space-xl);
+}
+
+@media (width >= 768px) {
+  .root {
+    margin: var(--space-sm);
+  }
 }

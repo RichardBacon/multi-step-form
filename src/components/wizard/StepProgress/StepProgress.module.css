@@ -1,11 +1,20 @@
 .root {
   display: flex;
-  flex: 0 0 17.125rem;
-  flex-direction: column;
   gap: var(--space-lg);
-  border-radius: var(--radius-lg);
-  background-image: url('/assets/images/bg-sidebar-desktop.svg');
+  align-items: flex-start;
+  justify-content: center;
+  background-image: url('/assets/images/bg-sidebar-mobile.svg');
   background-repeat: no-repeat;
   background-size: cover;
   padding: var(--space-lg);
+  height: 11rem;
+}
+
+@media (width >= 768px) {
+  .root {
+    flex-direction: column;
+    border-radius: var(--radius-lg);
+    background-image: url('/assets/images/bg-sidebar-desktop.svg');
+    height: auto;
+  }
 }

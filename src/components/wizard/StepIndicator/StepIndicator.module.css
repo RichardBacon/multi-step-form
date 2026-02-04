@@ -23,15 +23,21 @@
 }
 
 .text {
-  display: flex;
-  flex-direction: column;
-  text-transform: uppercase;
+  display: none;
 }
 
-.textStep {
-  font-weight: 400;
-}
+@media (width >= 768px) {
+  .text {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+  }
 
-.textDescription {
-  font-weight: 700;
+  .textStep {
+    font-weight: 400;
+  }
+
+  .textDescription {
+    font-weight: 700;
+  }
 }
