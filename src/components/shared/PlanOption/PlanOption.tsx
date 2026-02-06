@@ -16,7 +16,7 @@ const PlanOption = ({
 }: PlanOptionProps) => {
   return (
     <div className={clsx(styles.root, selected && styles.selected)}>
-      <img src={iconImageSrc} alt="" width={40} height={40} />
+      <img className={styles.icon} src={iconImageSrc} alt="" />
       <div className={styles.text}>
         <span className={styles.title}>{title}</span>
         <span className={styles.price}>{price}</span>
