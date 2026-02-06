@@ -4,6 +4,13 @@
   justify-content: space-between;
   padding: 0 var(--space-sm);
   color: var(--grey);
+  font-size: 0.875rem;
+}
+
+@media (width >= 768px) {
+  .root {
+    font-size: 1rem;
+  }
 }
 
 .total {
