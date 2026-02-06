@@ -4,7 +4,7 @@ import StepProgress from '../StepProgress/StepProgress';
 import styles from './MultiStepForm.module.css';
 
 const MultiStepForm = () => {
-  const [currentStep] = useState(4);
+  const [currentStep] = useState(1);
 
   return (
     <div className={styles.root}>
