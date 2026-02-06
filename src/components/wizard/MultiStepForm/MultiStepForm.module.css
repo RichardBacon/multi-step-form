@@ -1,6 +1,7 @@
 .root {
   display: grid;
   grid-template-rows: auto 1fr;
+  align-items: start;
   min-height: 100dvh;
 }
 
@@ -8,6 +9,7 @@
   .root {
     grid-template-rows: 1fr;
     grid-template-columns: 17rem 1fr;
+    align-items: stretch;
     border-radius: var(--radius-lg);
     background-color: var(--white);
     padding: var(--space-sm);
