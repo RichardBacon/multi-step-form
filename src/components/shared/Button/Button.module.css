@@ -1,18 +1,17 @@
 .root {
   border-radius: var(--radius-md);
   background-color: var(--blue-950);
-  width: 6rem;
-  height: 2.5rem;
+  padding: 0.5rem var(--space-sm);
+  min-width: 6rem;
   overflow: hidden;
   color: var(--blue-50);
-  font-size: 0.875rem;
+  font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
 }
 
 @media (width >= 768px) {
   .root {
-    width: 8rem;
-    height: 3rem;
-    font-size: 1rem;
+    padding: 0.75rem var(--space-sm);
+    min-width: 8rem;
   }
 }
 
@@ -28,8 +27,8 @@
 
 .tertiary {
   background-color: transparent;
-  width: fit-content;
-  height: fit-content;
+  padding: 0;
+  min-width: fit-content;
   text-decoration: underline var(--grey) 2px;
   color: var(--grey);
   font-weight: 400;

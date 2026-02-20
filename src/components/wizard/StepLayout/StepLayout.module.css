@@ -3,8 +3,8 @@
   margin: -4.5rem var(--space-sm) var(--space-sm) var(--space-sm);
   border-radius: var(--radius-lg);
   background-color: var(--white);
-  padding: var(--space-lg) var(--space-sm);
-  max-width: 21rem;
+  padding: var(--space-lg) var(--space-sm) 5rem;
+  max-width: 28rem;
 }
 
 @media (width >= 768px) {

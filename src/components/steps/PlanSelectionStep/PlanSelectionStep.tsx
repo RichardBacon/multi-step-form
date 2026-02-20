@@ -14,12 +14,10 @@ const PlanSelectionStep = () => {
       />
       <PlanSelector />
       <Toggle leftLabel="Monthly" rightLabel="Yearly" activeOption="left" />
-      <div className={styles.stepActionsContainer}>
-        <StepActions>
-          <Button variant="secondary">Go Back</Button>
-          <Button variant="primary">Next Step</Button>
-        </StepActions>
-      </div>
+      <StepActions>
+        <Button variant="secondary">Go Back</Button>
+        <Button variant="primary">Next Step</Button>
+      </StepActions>
     </div>
   );
 };

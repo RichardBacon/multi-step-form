@@ -12,11 +12,9 @@ const PersonalInfoStep = () => {
         subheading="Please provide your name, email address, and phone number."
       />
       <PersonalInfoForm />
-      <div className={styles.stepActionsContainer}>
-        <StepActions>
-          <Button variant="primary">Next Step</Button>
-        </StepActions>
-      </div>
+      <StepActions>
+        <Button variant="primary">Next Step</Button>
+      </StepActions>
     </div>
   );
 };

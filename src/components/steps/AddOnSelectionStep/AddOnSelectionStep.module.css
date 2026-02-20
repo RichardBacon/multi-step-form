@@ -10,20 +10,3 @@
     height: 100%;
   }
 }
-
-.stepActionsContainer {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  background-color: var(--white);
-  padding: var(--space-sm);
-  width: 100%;
-}
-
-@media (width >= 768px) {
-  .stepActionsContainer {
-    position: unset;
-    margin-top: auto;
-    padding: 0;
-  }
-}

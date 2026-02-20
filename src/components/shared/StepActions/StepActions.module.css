@@ -1,7 +1,22 @@
 .root {
   display: flex;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
   gap: var(--space-sm);
   justify-content: flex-end;
+  background-color: var(--white);
+  padding: var(--space-sm);
+}
+
+@media (width >= 768px) {
+  .root {
+    position: static;
+    margin-top: auto;
+    background-color: transparent;
+    padding: 0;
+  }
 }
 
 .root > *:first-child:not(:last-child) {

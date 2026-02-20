@@ -12,12 +12,10 @@ const AddOnSelectionStep = () => {
         subheading="Add-ons help enhance your gaming experience."
       />
       <AddOnSelector />
-      <div className={styles.stepActionsContainer}>
-        <StepActions>
-          <Button variant="secondary">Go Back</Button>
-          <Button variant="primary">Next Step</Button>
-        </StepActions>
-      </div>
+      <StepActions>
+        <Button variant="secondary">Go Back</Button>
+        <Button variant="primary">Next Step</Button>
+      </StepActions>
     </div>
   );
 };

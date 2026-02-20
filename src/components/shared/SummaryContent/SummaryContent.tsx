@@ -12,12 +12,12 @@ const SummaryContent = () => {
         <span>$9/mo</span>
       </div>
       <div className={styles.addOnSummaryItem}>
-        <span>Online service</span>
-        <span>+$1/mo</span>
+        <span className={styles.addOnSummaryItemName}>Online service</span>
+        <span className={styles.addOnSummaryItemPrice}>+$1/mo</span>
       </div>
       <div className={styles.addOnSummaryItem}>
-        <span>Larger storage</span>
-        <span>+$2/mo</span>
+        <span className={styles.addOnSummaryItemName}>Larger storage</span>
+        <span className={styles.addOnSummaryItemPrice}>+$2/mo</span>
       </div>
     </div>
   );

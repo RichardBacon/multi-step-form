@@ -14,12 +14,10 @@ const SummaryStep = () => {
       />
       <SummaryContent />
       <TotalRow />
-      <div className={styles.stepActionsContainer}>
-        <StepActions>
-          <Button variant="secondary">Go Back</Button>
-          <Button variant="primary">Confirm</Button>
-        </StepActions>
-      </div>
+      <StepActions>
+        <Button variant="secondary">Go Back</Button>
+        <Button variant="primary">Confirm</Button>
+      </StepActions>
     </div>
   );
 };

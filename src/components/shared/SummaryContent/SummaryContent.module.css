@@ -5,17 +5,12 @@
   border-radius: var(--radius-md);
   background-color: var(--blue-50);
   padding: var(--space-sm);
-  font-size: 0.875rem;
-}
-
-@media (width >= 768px) {
-  .root {
-    font-size: 1rem;
-  }
+  font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
 }
 
 .planSummaryItem {
   display: flex;
+  gap: var(--space-sm);
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--grey);
@@ -32,11 +27,24 @@
 .planSummaryItemContent {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .addOnSummaryItem {
   display: flex;
+  gap: var(--space-sm);
   align-items: center;
   justify-content: space-between;
   color: var(--grey);
+}
+
+.addOnSummaryItemName {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.addOnSummaryItemPrice {
+  flex-shrink: 0;
 }

@@ -10,13 +10,6 @@
 }
 
 .icon {
-  width: 3rem;
-  height: 3rem;
-}
-
-@media (width >= 768px) {
-  .icon {
-    width: 4rem;
-    height: 4rem;
-  }
+  width: clamp(3rem, 2.5rem + 1.5vw, 4rem);
+  height: clamp(3rem, 2.5rem + 1.5vw, 4rem);
 }

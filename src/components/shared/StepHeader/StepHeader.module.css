@@ -5,16 +5,9 @@
 }
 
 .heading {
-  font-size: 1.5rem;
-}
-
-@media (width >= 768px) {
-  .heading {
-    font-size: 2rem;
-  }
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
 }
 
 .subheading {
   color: var(--grey);
-  font-size: 1rem;
 }
