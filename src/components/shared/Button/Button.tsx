@@ -8,7 +8,9 @@ interface ButtonProps {
 }
 const Button = ({ children, variant = 'primary' }: ButtonProps) => {
   return (
-    <button className={clsx(styles.root, styles[variant])}>{children}</button>
+    <button type="button" className={clsx(styles.root, styles[variant])}>
+      {children}
+    </button>
   );
 };
 

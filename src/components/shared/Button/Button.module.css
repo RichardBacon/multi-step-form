@@ -5,7 +5,7 @@
   min-width: 6rem;
   overflow: hidden;
   color: var(--blue-50);
-  font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+  font-size: var(--font-size-sm);
 }
 
 @media (width >= 768px) {

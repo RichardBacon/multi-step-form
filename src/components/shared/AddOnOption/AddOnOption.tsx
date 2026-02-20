@@ -15,7 +15,12 @@ const AddOnOption = ({
 }: AddOnOptionProps) => {
   return (
     <div className={clsx(styles.root, selected && styles.selected)}>
-      <input type="checkbox" className={styles.checkbox} checked={selected} />
+      <input
+        type="checkbox"
+        className={styles.checkbox}
+        checked={selected}
+        readOnly
+      />
       <div className={styles.text}>
         <span className={styles.title}>{title}</span>
         <span className={styles.description}>{description}</span>

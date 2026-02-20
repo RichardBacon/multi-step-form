@@ -32,7 +32,7 @@ const StepProgress = ({ currentStep }: StepProgressProps) => {
           key={step.id}
           step={step.id}
           title={step.title}
-          active={step.id === currentStep}
+          active={step.id === Math.min(currentStep, 4)}
         />
       ))}
     </div>

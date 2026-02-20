@@ -59,6 +59,11 @@
     --space-lg: 2rem;
     --space-xl: 5rem;
 
+    /* Font sizes */
+    --font-size-xs: clamp(0.75rem, 0.65rem + 0.35vw, 1rem);
+    --font-size-sm: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+    --font-size-lg: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+
     /* Border radius */
     --radius-sm: 0.25rem;
     --radius-md: 0.5rem;

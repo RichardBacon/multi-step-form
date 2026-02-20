@@ -4,7 +4,7 @@
   justify-content: space-between;
   padding: 0 var(--space-sm);
   color: var(--grey);
-  font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+  font-size: var(--font-size-sm);
 }
 
 .total {

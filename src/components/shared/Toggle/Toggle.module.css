@@ -7,7 +7,7 @@
   background-color: var(--blue-50);
   width: 100%;
   height: clamp(2.5rem, 2.25rem + 0.75vw, 3rem);
-  font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+  font-size: var(--font-size-sm);
 }
 
 .label {

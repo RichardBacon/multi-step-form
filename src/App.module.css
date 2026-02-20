@@ -1,7 +1,12 @@
 .root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
   min-height: 100dvh;
+}
+
+@media (width >= 768px) {
+  .root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
