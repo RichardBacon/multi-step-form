@@ -1,10 +1,16 @@
 import { useState } from 'react';
+import { type PersonalInfo } from '../../../types';
 import StepLayout from '../StepLayout/StepLayout';
 import StepProgress from '../StepProgress/StepProgress';
 import styles from './MultiStepForm.module.css';
 
 const MultiStepForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [personalInfo, setPersonalInfo] = useState<PersonalInfo>({
+    name: '',
+    email: '',
+    phone: '',
+  });
 
   const handleNextStep = () => {
     setCurrentStep((s) => s + 1);
@@ -21,6 +27,8 @@ const MultiStepForm = () => {
         currentStep={currentStep}
         onNextStep={handleNextStep}
         onBackStep={handleBackStep}
+        personalInfo={personalInfo}
+        setPersonalInfo={setPersonalInfo}
       />
     </div>
   );

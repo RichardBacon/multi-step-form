@@ -1,3 +1,5 @@
+import { type Dispatch, type SetStateAction } from 'react';
+import { type PersonalInfo } from '../../../types';
 import AddOnSelectionStep from '../../steps/AddOnSelectionStep/AddOnSelectionStep';
 import PersonalInfoStep from '../../steps/PersonalInfoStep/PersonalInfoStep';
 import PlanSelectionStep from '../../steps/PlanSelectionStep/PlanSelectionStep';
@@ -10,12 +12,16 @@ interface StepLayoutProps {
   currentStep: number;
   onNextStep: () => void;
   onBackStep: () => void;
+  personalInfo: PersonalInfo;
+  setPersonalInfo: Dispatch<SetStateAction<PersonalInfo>>;
 }
 
 const StepLayout = ({
   currentStep,
   onNextStep,
   onBackStep,
+  personalInfo,
+  setPersonalInfo,
 }: StepLayoutProps) => {
   return (
     <div className={styles.root}>
@@ -27,7 +33,12 @@ const StepLayout = ({
           onNextStep={onNextStep}
           onBackStep={onBackStep}
         >
-          {currentStep === 1 && <PersonalInfoStep />}
+          {currentStep === 1 && (
+            <PersonalInfoStep
+              personalInfo={personalInfo}
+              setPersonalInfo={setPersonalInfo}
+            />
+          )}
           {currentStep === 2 && <PlanSelectionStep />}
           {currentStep === 3 && <AddOnSelectionStep />}
           {currentStep === 4 && <SummaryStep />}
