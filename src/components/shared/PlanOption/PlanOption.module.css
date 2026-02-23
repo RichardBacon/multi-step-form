@@ -4,6 +4,7 @@
   align-items: center;
   border: 1px solid var(--grey);
   border-radius: var(--radius-md);
+  cursor: pointer;
   padding: var(--space-xs);
   width: 100%;
 }
@@ -20,9 +21,16 @@
   }
 }
 
-.selected {
+.root:has(input:checked) {
   border: 1px solid var(--blue-950);
   background-color: var(--blue-50);
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .icon {
@@ -49,4 +57,13 @@
 
 .price {
   color: var(--grey);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
 }

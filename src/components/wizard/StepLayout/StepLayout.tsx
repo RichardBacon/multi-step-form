@@ -14,6 +14,8 @@ interface StepLayoutProps {
   onBackStep: () => void;
   personalInfo: PersonalInfo;
   setPersonalInfo: Dispatch<SetStateAction<PersonalInfo>>;
+  selectedPlan: string;
+  setSelectedPlan: (value: string) => void;
 }
 
 const StepLayout = ({
@@ -22,6 +24,8 @@ const StepLayout = ({
   onBackStep,
   personalInfo,
   setPersonalInfo,
+  selectedPlan,
+  setSelectedPlan,
 }: StepLayoutProps) => {
   return (
     <div className={styles.root}>
@@ -39,7 +43,12 @@ const StepLayout = ({
               setPersonalInfo={setPersonalInfo}
             />
           )}
-          {currentStep === 2 && <PlanSelectionStep />}
+          {currentStep === 2 && (
+            <PlanSelectionStep
+              selectedPlan={selectedPlan}
+              setSelectedPlan={setSelectedPlan}
+            />
+          )}
           {currentStep === 3 && <AddOnSelectionStep />}
           {currentStep === 4 && <SummaryStep />}
         </Step>

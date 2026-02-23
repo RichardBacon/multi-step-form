@@ -11,6 +11,7 @@ const MultiStepForm = () => {
     email: '',
     phone: '',
   });
+  const [selectedPlan, setSelectedPlan] = useState('arcade');
 
   const handleNextStep = () => {
     setCurrentStep((s) => s + 1);
@@ -29,6 +30,8 @@ const MultiStepForm = () => {
         onBackStep={handleBackStep}
         personalInfo={personalInfo}
         setPersonalInfo={setPersonalInfo}
+        selectedPlan={selectedPlan}
+        setSelectedPlan={setSelectedPlan}
       />
     </div>
   );
