@@ -1,7 +1,5 @@
-import StepActions from '../../shared/StepActions/StepActions';
 import StepHeader from '../../shared/StepHeader/StepHeader';
 import SummaryContent from '../../shared/SummaryContent/SummaryContent';
-import Button from '../../shared/Button/Button';
 import TotalRow from '../../shared/TotalRow/TotalRow';
 
 const SummaryStep = () => {
@@ -13,10 +11,6 @@ const SummaryStep = () => {
       />
       <SummaryContent />
       <TotalRow />
-      <StepActions>
-        <Button variant="secondary">Go Back</Button>
-        <Button variant="primary">Confirm</Button>
-      </StepActions>
     </>
   );
 };

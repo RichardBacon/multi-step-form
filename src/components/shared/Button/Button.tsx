@@ -5,10 +5,15 @@ import styles from './Button.module.css';
 interface ButtonProps {
   children: ReactNode;
   variant?: 'primary' | 'secondary' | 'tertiary';
+  onClick?: () => void;
 }
-const Button = ({ children, variant = 'primary' }: ButtonProps) => {
+const Button = ({ children, variant = 'primary', onClick }: ButtonProps) => {
   return (
-    <button type="button" className={clsx(styles.root, styles[variant])}>
+    <button
+      type="button"
+      className={clsx(styles.root, styles[variant])}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

@@ -4,12 +4,24 @@ import StepProgress from '../StepProgress/StepProgress';
 import styles from './MultiStepForm.module.css';
 
 const MultiStepForm = () => {
-  const [currentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(1);
+
+  const handleNextStep = () => {
+    setCurrentStep((s) => s + 1);
+  };
+
+  const handleBackStep = () => {
+    setCurrentStep((s) => s - 1);
+  };
 
   return (
     <div className={styles.root}>
       <StepProgress currentStep={currentStep} />
-      <StepLayout currentStep={currentStep} />
+      <StepLayout
+        currentStep={currentStep}
+        onNextStep={handleNextStep}
+        onBackStep={handleBackStep}
+      />
     </div>
   );
 };
