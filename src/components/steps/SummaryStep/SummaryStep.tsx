@@ -1,16 +1,38 @@
+import { type AddOnId, type BillingCycle, type PlanId } from '../../../types';
 import StepHeader from '../../shared/StepHeader/StepHeader';
 import SummaryContent from '../../shared/SummaryContent/SummaryContent';
 import TotalRow from '../../shared/TotalRow/TotalRow';
 
-const SummaryStep = () => {
+interface SummaryStepProps {
+  planId: PlanId;
+  billingCycle: BillingCycle;
+  addOnIds: AddOnId[];
+  onGoToStep: (step: 1 | 2 | 3 | 4) => void;
+}
+
+const SummaryStep = ({
+  planId,
+  billingCycle,
+  addOnIds,
+  onGoToStep,
+}: SummaryStepProps) => {
   return (
     <>
       <StepHeader
         heading="Finishing up"
         subheading="Double check everything looks OK before confirming."
       />
-      <SummaryContent />
-      <TotalRow />
+      <SummaryContent
+        planId={planId}
+        billingCycle={billingCycle}
+        addOnIds={addOnIds}
+        onGoToStep={onGoToStep}
+      />
+      <TotalRow
+        planId={planId}
+        billingCycle={billingCycle}
+        addOnIds={addOnIds}
+      />
     </>
   );
 };

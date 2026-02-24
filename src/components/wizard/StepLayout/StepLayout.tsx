@@ -16,6 +16,7 @@ interface StepLayoutProps {
   currentStep: number;
   onNextStep: () => void;
   onBackStep: () => void;
+  onGoToStep: (step: 1 | 2 | 3 | 4) => void;
   personalInfo: PersonalInfo;
   onPersonalInfoChange: (field: keyof PersonalInfo, value: string) => void;
   planId: PlanId;
@@ -30,6 +31,7 @@ const StepLayout = ({
   currentStep,
   onNextStep,
   onBackStep,
+  onGoToStep,
   personalInfo,
   onPersonalInfoChange,
   planId,
@@ -70,7 +72,14 @@ const StepLayout = ({
               billingCycle={billingCycle}
             />
           )}
-          {currentStep === 4 && <SummaryStep />}
+          {currentStep === 4 && (
+            <SummaryStep
+              planId={planId}
+              billingCycle={billingCycle}
+              addOnIds={addOnIds}
+              onGoToStep={onGoToStep}
+            />
+          )}
         </Step>
       ) : (
         <ThankYouStep />

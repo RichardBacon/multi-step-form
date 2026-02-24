@@ -22,6 +22,7 @@ const MultiStepForm = () => {
 
   const handleNextStep = () => setCurrentStep((s) => s + 1);
   const handleBackStep = () => setCurrentStep((s) => s - 1);
+  const handleGoToStep = (step: 1 | 2 | 3 | 4) => setCurrentStep(step);
 
   const handlePersonalInfoChange = (
     field: keyof PersonalInfo,
@@ -47,6 +48,7 @@ const MultiStepForm = () => {
         currentStep={currentStep}
         onNextStep={handleNextStep}
         onBackStep={handleBackStep}
+        onGoToStep={handleGoToStep}
         personalInfo={personalInfo}
         onPersonalInfoChange={handlePersonalInfoChange}
         planId={planId}

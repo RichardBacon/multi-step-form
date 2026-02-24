@@ -1,4 +1,5 @@
-import { type BillingCycle, type Plan, type PlanId } from '../../../types';
+import { PLANS } from '../../../data';
+import { type BillingCycle, type PlanId } from '../../../types';
 import PlanOption from '../PlanOption/PlanOption';
 import styles from './PlanSelector.module.css';
 
@@ -7,27 +8,6 @@ interface PlanSelectorProps {
   onSelectPlan: (planId: PlanId) => void;
   billingCycle: BillingCycle;
 }
-
-const PLANS: Plan[] = [
-  {
-    id: 'arcade',
-    name: 'Arcade',
-    monthlyPrice: 9,
-    yearlyPrice: 90,
-  },
-  {
-    id: 'advanced',
-    name: 'Advanced',
-    monthlyPrice: 12,
-    yearlyPrice: 120,
-  },
-  {
-    id: 'pro',
-    name: 'Pro',
-    monthlyPrice: 15,
-    yearlyPrice: 150,
-  },
-];
 
 const formatPrice = (price: number, cycle: BillingCycle) =>
   cycle === 'monthly' ? `$${price}/mo` : `$${price}/yr`;
