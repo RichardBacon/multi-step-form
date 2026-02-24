@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
   type AddOnId,
   type BillingCycle,
+  type FormSubmission,
   type PersonalInfo,
   type PlanId,
 } from '../../../types';
@@ -9,7 +10,11 @@ import StepLayout from '../StepLayout/StepLayout';
 import StepProgress from '../StepProgress/StepProgress';
 import styles from './MultiStepForm.module.css';
 
-const MultiStepForm = () => {
+interface MultiStepFormProps {
+  onSubmit?: (data: FormSubmission) => void;
+}
+
+const MultiStepForm = ({ onSubmit }: MultiStepFormProps) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [personalInfo, setPersonalInfo] = useState<PersonalInfo>({
     name: '',
@@ -41,6 +46,11 @@ const MultiStepForm = () => {
     );
   };
 
+  const handleSubmit = () => {
+    onSubmit?.({ personalInfo, planId, billingCycle, addOnIds });
+    setCurrentStep(5);
+  };
+
   return (
     <div className={styles.root}>
       <StepProgress currentStep={currentStep} />
@@ -49,6 +59,7 @@ const MultiStepForm = () => {
         onNextStep={handleNextStep}
         onBackStep={handleBackStep}
         onGoToStep={handleGoToStep}
+        onSubmit={handleSubmit}
         personalInfo={personalInfo}
         onPersonalInfoChange={handlePersonalInfoChange}
         planId={planId}

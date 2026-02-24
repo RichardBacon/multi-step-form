@@ -5,10 +5,31 @@
   font-size: var(--font-size-sm);
 }
 
+.labelRow {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-weight: 700;
+}
+
+.error {
+  color: hsl(354deg 84% 57%);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+}
+
 .input {
   border: 1px solid var(--grey);
   border-radius: var(--radius-md);
   padding: var(--space-xs);
+}
+
+.inputError {
+  border-color: hsl(354deg 84% 57%);
 }
 
 .input::placeholder {

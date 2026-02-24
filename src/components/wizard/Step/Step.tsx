@@ -9,6 +9,7 @@ interface StepProps {
   nextLabel?: string;
   onNextStep?: () => void;
   onBackStep?: () => void;
+  validateStep?: () => boolean;
 }
 
 const Step = ({
@@ -18,7 +19,13 @@ const Step = ({
   nextLabel = 'Next Step',
   onNextStep,
   onBackStep,
+  validateStep,
 }: StepProps) => {
+  const handleNext = () => {
+    if (validateStep && !validateStep()) return;
+    onNextStep?.();
+  };
+
   return (
     <>
       {children}
@@ -30,7 +37,7 @@ const Step = ({
             </Button>
           )}
           {showNext && (
-            <Button variant="primary" onClick={onNextStep}>
+            <Button variant="primary" onClick={handleNext}>
               {nextLabel}
             </Button>
           )}

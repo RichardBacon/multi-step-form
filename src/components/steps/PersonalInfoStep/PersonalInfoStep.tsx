@@ -5,11 +5,13 @@ import StepHeader from '../../shared/StepHeader/StepHeader';
 interface PersonalInfoStepProps {
   personalInfo: PersonalInfo;
   onPersonalInfoChange: (field: keyof PersonalInfo, value: string) => void;
+  errors: Partial<Record<keyof PersonalInfo, string>>;
 }
 
 const PersonalInfoStep = ({
   personalInfo,
   onPersonalInfoChange,
+  errors,
 }: PersonalInfoStepProps) => {
   return (
     <>
@@ -20,6 +22,7 @@ const PersonalInfoStep = ({
       <PersonalInfoForm
         personalInfo={personalInfo}
         onPersonalInfoChange={onPersonalInfoChange}
+        errors={errors}
       />
     </>
   );

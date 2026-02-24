@@ -1,9 +1,14 @@
+import { useState } from 'react';
 import {
   type AddOnId,
   type BillingCycle,
   type PersonalInfo,
   type PlanId,
 } from '../../../types';
+import {
+  getPersonalInfoErrors,
+  isPersonalInfoValid,
+} from '../../../utils/validation';
 import AddOnSelectionStep from '../../steps/AddOnSelectionStep/AddOnSelectionStep';
 import PersonalInfoStep from '../../steps/PersonalInfoStep/PersonalInfoStep';
 import PlanSelectionStep from '../../steps/PlanSelectionStep/PlanSelectionStep';
@@ -17,6 +22,7 @@ interface StepLayoutProps {
   onNextStep: () => void;
   onBackStep: () => void;
   onGoToStep: (step: 1 | 2 | 3 | 4) => void;
+  onSubmit: () => void;
   personalInfo: PersonalInfo;
   onPersonalInfoChange: (field: keyof PersonalInfo, value: string) => void;
   planId: PlanId;
@@ -32,6 +38,7 @@ const StepLayout = ({
   onNextStep,
   onBackStep,
   onGoToStep,
+  onSubmit,
   personalInfo,
   onPersonalInfoChange,
   planId,
@@ -41,6 +48,16 @@ const StepLayout = ({
   addOnIds,
   onToggleAddOn,
 }: StepLayoutProps) => {
+  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
+
+  const errors = getPersonalInfoErrors(personalInfo);
+  const showErrors = attemptedSubmit;
+
+  const validatePersonalInfo = () => {
+    setAttemptedSubmit(true);
+    return isPersonalInfoValid(personalInfo);
+  };
+
   return (
     <div className={styles.root}>
       {currentStep < 5 ? (
@@ -48,13 +65,15 @@ const StepLayout = ({
           showBack={currentStep > 1}
           showNext
           nextLabel={currentStep === 4 ? 'Confirm' : 'Next Step'}
-          onNextStep={onNextStep}
+          onNextStep={currentStep === 4 ? onSubmit : onNextStep}
           onBackStep={onBackStep}
+          validateStep={currentStep === 1 ? validatePersonalInfo : undefined}
         >
           {currentStep === 1 && (
             <PersonalInfoStep
               personalInfo={personalInfo}
               onPersonalInfoChange={onPersonalInfoChange}
+              errors={showErrors ? errors : {}}
             />
           )}
           {currentStep === 2 && (

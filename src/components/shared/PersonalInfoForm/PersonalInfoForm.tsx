@@ -6,11 +6,13 @@ import styles from './PersonalInfoForm.module.css';
 interface PersonalInfoFormProps {
   personalInfo: PersonalInfo;
   onPersonalInfoChange: (field: keyof PersonalInfo, value: string) => void;
+  errors: Partial<Record<keyof PersonalInfo, string>>;
 }
 
 const PersonalInfoForm = ({
   personalInfo,
   onPersonalInfoChange,
+  errors,
 }: PersonalInfoFormProps) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onPersonalInfoChange(e.target.name as keyof PersonalInfo, e.target.value);
@@ -25,6 +27,7 @@ const PersonalInfoForm = ({
         placeholder="e.g. John Doe"
         value={personalInfo.name}
         onChange={handleChange}
+        error={errors.name}
       />
       <FormField
         label="Email Address"
@@ -33,6 +36,7 @@ const PersonalInfoForm = ({
         placeholder="e.g. john.doe@example.com"
         value={personalInfo.email}
         onChange={handleChange}
+        error={errors.email}
       />
       <FormField
         label="Phone Number"
@@ -41,6 +45,7 @@ const PersonalInfoForm = ({
         placeholder="e.g. +44 123 456 7890"
         value={personalInfo.phone}
         onChange={handleChange}
+        error={errors.phone}
       />
     </form>
   );
