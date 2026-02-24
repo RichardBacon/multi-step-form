@@ -5,16 +5,16 @@ import Toggle from '../../shared/Toggle/Toggle';
 
 interface PlanSelectionStepProps {
   planId: PlanId;
-  setPlanId: (planId: PlanId) => void;
+  onSelectPlan: (planId: PlanId) => void;
   billingCycle: BillingCycle;
-  setBillingCycle: (cycle: BillingCycle) => void;
+  onSetBillingCycle: (cycle: BillingCycle) => void;
 }
 
 const PlanSelectionStep = ({
   planId,
-  setPlanId,
+  onSelectPlan,
   billingCycle,
-  setBillingCycle,
+  onSetBillingCycle,
 }: PlanSelectionStepProps) => {
   return (
     <>
@@ -24,7 +24,7 @@ const PlanSelectionStep = ({
       />
       <PlanSelector
         planId={planId}
-        setPlanId={setPlanId}
+        onSelectPlan={onSelectPlan}
         billingCycle={billingCycle}
       />
       <Toggle
@@ -32,7 +32,7 @@ const PlanSelectionStep = ({
         rightLabel="Yearly"
         activeOption={billingCycle === 'monthly' ? 'left' : 'right'}
         onChange={(option) =>
-          setBillingCycle(option === 'left' ? 'monthly' : 'yearly')
+          onSetBillingCycle(option === 'left' ? 'monthly' : 'yearly')
         }
       />
     </>

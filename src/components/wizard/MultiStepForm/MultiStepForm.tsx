@@ -20,12 +20,24 @@ const MultiStepForm = () => {
   const [billingCycle, setBillingCycle] = useState<BillingCycle>('monthly');
   const [addOnIds, setAddOnIds] = useState<AddOnId[]>([]);
 
-  const handleNextStep = () => {
-    setCurrentStep((s) => s + 1);
+  const handleNextStep = () => setCurrentStep((s) => s + 1);
+  const handleBackStep = () => setCurrentStep((s) => s - 1);
+
+  const handlePersonalInfoChange = (
+    field: keyof PersonalInfo,
+    value: string,
+  ) => {
+    setPersonalInfo((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleBackStep = () => {
-    setCurrentStep((s) => s - 1);
+  const handleSelectPlan = (id: PlanId) => setPlanId(id);
+
+  const handleSetBillingCycle = (cycle: BillingCycle) => setBillingCycle(cycle);
+
+  const handleToggleAddOn = (id: AddOnId) => {
+    setAddOnIds((prev) =>
+      prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id],
+    );
   };
 
   return (
@@ -36,13 +48,13 @@ const MultiStepForm = () => {
         onNextStep={handleNextStep}
         onBackStep={handleBackStep}
         personalInfo={personalInfo}
-        setPersonalInfo={setPersonalInfo}
+        onPersonalInfoChange={handlePersonalInfoChange}
         planId={planId}
-        setPlanId={setPlanId}
+        onSelectPlan={handleSelectPlan}
         billingCycle={billingCycle}
-        setBillingCycle={setBillingCycle}
+        onSetBillingCycle={handleSetBillingCycle}
         addOnIds={addOnIds}
-        setAddOnIds={setAddOnIds}
+        onToggleAddOn={handleToggleAddOn}
       />
     </div>
   );

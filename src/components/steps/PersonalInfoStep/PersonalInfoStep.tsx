@@ -1,16 +1,15 @@
-import { type Dispatch, type SetStateAction } from 'react';
 import { type PersonalInfo } from '../../../types';
 import PersonalInfoForm from '../../shared/PersonalInfoForm/PersonalInfoForm';
 import StepHeader from '../../shared/StepHeader/StepHeader';
 
 interface PersonalInfoStepProps {
   personalInfo: PersonalInfo;
-  setPersonalInfo: Dispatch<SetStateAction<PersonalInfo>>;
+  onPersonalInfoChange: (field: keyof PersonalInfo, value: string) => void;
 }
 
 const PersonalInfoStep = ({
   personalInfo,
-  setPersonalInfo,
+  onPersonalInfoChange,
 }: PersonalInfoStepProps) => {
   return (
     <>
@@ -20,7 +19,7 @@ const PersonalInfoStep = ({
       />
       <PersonalInfoForm
         personalInfo={personalInfo}
-        setPersonalInfo={setPersonalInfo}
+        onPersonalInfoChange={onPersonalInfoChange}
       />
     </>
   );

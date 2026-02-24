@@ -1,19 +1,19 @@
-import { type ChangeEvent, type Dispatch, type SetStateAction } from 'react';
+import { type ChangeEvent } from 'react';
 import { type PersonalInfo } from '../../../types';
 import FormField from '../FormField/FormField';
 import styles from './PersonalInfoForm.module.css';
 
 interface PersonalInfoFormProps {
   personalInfo: PersonalInfo;
-  setPersonalInfo: Dispatch<SetStateAction<PersonalInfo>>;
+  onPersonalInfoChange: (field: keyof PersonalInfo, value: string) => void;
 }
 
 const PersonalInfoForm = ({
   personalInfo,
-  setPersonalInfo,
+  onPersonalInfoChange,
 }: PersonalInfoFormProps) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setPersonalInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    onPersonalInfoChange(e.target.name as keyof PersonalInfo, e.target.value);
   };
 
   return (

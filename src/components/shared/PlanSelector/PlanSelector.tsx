@@ -4,7 +4,7 @@ import styles from './PlanSelector.module.css';
 
 interface PlanSelectorProps {
   planId: PlanId;
-  setPlanId: (planId: PlanId) => void;
+  onSelectPlan: (planId: PlanId) => void;
   billingCycle: BillingCycle;
 }
 
@@ -34,7 +34,7 @@ const formatPrice = (price: number, cycle: BillingCycle) =>
 
 const PlanSelector = ({
   planId,
-  setPlanId,
+  onSelectPlan,
   billingCycle,
 }: PlanSelectorProps) => {
   return (
@@ -52,7 +52,7 @@ const PlanSelector = ({
             billingCycle,
           )}
           checked={planId === plan.id}
-          onChange={(value) => setPlanId(value as PlanId)}
+          onChange={(value) => onSelectPlan(value as PlanId)}
         />
       ))}
     </fieldset>

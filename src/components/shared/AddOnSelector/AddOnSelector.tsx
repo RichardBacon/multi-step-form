@@ -1,11 +1,10 @@
-import { type Dispatch, type SetStateAction } from 'react';
 import { type AddOn, type AddOnId, type BillingCycle } from '../../../types';
 import AddOnOption from '../AddOnOption/AddOnOption';
 import styles from './AddOnSelector.module.css';
 
 interface AddOnSelectorProps {
   addOnIds: AddOnId[];
-  setAddOnIds: Dispatch<SetStateAction<AddOnId[]>>;
+  onToggleAddOn: (addOnId: AddOnId) => void;
   billingCycle: BillingCycle;
 }
 
@@ -38,15 +37,9 @@ const formatPrice = (price: number, cycle: BillingCycle) =>
 
 const AddOnSelector = ({
   addOnIds,
-  setAddOnIds,
+  onToggleAddOn,
   billingCycle,
 }: AddOnSelectorProps) => {
-  const handleChange = (id: AddOnId) => {
-    setAddOnIds((prev) =>
-      prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id],
-    );
-  };
-
   return (
     <fieldset className={styles.root}>
       <legend className={styles.legend}>Select add-ons</legend>
@@ -61,7 +54,7 @@ const AddOnSelector = ({
             billingCycle,
           )}
           checked={addOnIds.includes(addOn.id)}
-          onChange={handleChange}
+          onChange={onToggleAddOn}
         />
       ))}
     </fieldset>
