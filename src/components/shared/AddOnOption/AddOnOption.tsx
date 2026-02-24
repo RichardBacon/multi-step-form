@@ -1,32 +1,37 @@
-import { clsx } from 'clsx';
 import styles from './AddOnOption.module.css';
 
 interface AddOnOptionProps {
   title: string;
   description: string;
   price: string;
-  selected?: boolean;
+  value: string;
+  checked?: boolean;
+  onChange?: (value: string) => void;
 }
+
 const AddOnOption = ({
   title,
   description,
   price,
-  selected = false,
+  value,
+  checked = false,
+  onChange,
 }: AddOnOptionProps) => {
   return (
-    <div className={clsx(styles.root, selected && styles.selected)}>
+    <label className={styles.root}>
       <input
         type="checkbox"
         className={styles.checkbox}
-        checked={selected}
-        readOnly
+        value={value}
+        checked={checked}
+        onChange={() => onChange?.(value)}
       />
       <div className={styles.text}>
         <span className={styles.title}>{title}</span>
         <span className={styles.description}>{description}</span>
       </div>
       <span className={styles.price}>{price}</span>
-    </div>
+    </label>
   );
 };
 

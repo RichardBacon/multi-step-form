@@ -4,6 +4,7 @@
   align-items: center;
   border: 1px solid var(--grey);
   border-radius: var(--radius-md);
+  cursor: pointer;
   padding: var(--space-xs);
 }
 
@@ -14,7 +15,7 @@
   }
 }
 
-.selected {
+.root:has(input:checked) {
   border: 1px solid var(--blue-600);
   background-color: var(--blue-50);
 }
