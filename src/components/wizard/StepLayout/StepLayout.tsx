@@ -1,5 +1,10 @@
 import { type Dispatch, type SetStateAction } from 'react';
-import { type PersonalInfo } from '../../../types';
+import {
+  type AddOnId,
+  type BillingCycle,
+  type PersonalInfo,
+  type PlanId,
+} from '../../../types';
 import AddOnSelectionStep from '../../steps/AddOnSelectionStep/AddOnSelectionStep';
 import PersonalInfoStep from '../../steps/PersonalInfoStep/PersonalInfoStep';
 import PlanSelectionStep from '../../steps/PlanSelectionStep/PlanSelectionStep';
@@ -14,8 +19,12 @@ interface StepLayoutProps {
   onBackStep: () => void;
   personalInfo: PersonalInfo;
   setPersonalInfo: Dispatch<SetStateAction<PersonalInfo>>;
-  selectedPlan: string;
-  setSelectedPlan: (value: string) => void;
+  planId: PlanId;
+  setPlanId: (planId: PlanId) => void;
+  billingCycle: BillingCycle;
+  setBillingCycle: (cycle: BillingCycle) => void;
+  addOnIds: AddOnId[];
+  setAddOnIds: Dispatch<SetStateAction<AddOnId[]>>;
 }
 
 const StepLayout = ({
@@ -24,8 +33,12 @@ const StepLayout = ({
   onBackStep,
   personalInfo,
   setPersonalInfo,
-  selectedPlan,
-  setSelectedPlan,
+  planId,
+  setPlanId,
+  billingCycle,
+  setBillingCycle,
+  addOnIds,
+  setAddOnIds,
 }: StepLayoutProps) => {
   return (
     <div className={styles.root}>
@@ -45,11 +58,19 @@ const StepLayout = ({
           )}
           {currentStep === 2 && (
             <PlanSelectionStep
-              selectedPlan={selectedPlan}
-              setSelectedPlan={setSelectedPlan}
+              planId={planId}
+              setPlanId={setPlanId}
+              billingCycle={billingCycle}
+              setBillingCycle={setBillingCycle}
             />
           )}
-          {currentStep === 3 && <AddOnSelectionStep />}
+          {currentStep === 3 && (
+            <AddOnSelectionStep
+              addOnIds={addOnIds}
+              setAddOnIds={setAddOnIds}
+              billingCycle={billingCycle}
+            />
+          )}
           {currentStep === 4 && <SummaryStep />}
         </Step>
       ) : (

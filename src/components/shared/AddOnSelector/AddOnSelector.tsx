@@ -1,41 +1,50 @@
-import { useState } from 'react';
+import { type Dispatch, type SetStateAction } from 'react';
+import { type AddOn, type AddOnId, type BillingCycle } from '../../../types';
 import AddOnOption from '../AddOnOption/AddOnOption';
 import styles from './AddOnSelector.module.css';
 
-const ADD_ONS = [
+interface AddOnSelectorProps {
+  addOnIds: AddOnId[];
+  setAddOnIds: Dispatch<SetStateAction<AddOnId[]>>;
+  billingCycle: BillingCycle;
+}
+
+const ADD_ONS: AddOn[] = [
   {
-    value: 'online-service',
-    title: 'Online service',
+    id: 'online-service',
+    name: 'Online service',
     description: 'Access to multiplayer games',
-    price: '+$1/mo',
+    monthlyPrice: 1,
+    yearlyPrice: 10,
   },
   {
-    value: 'larger-storage',
-    title: 'Larger storage',
+    id: 'larger-storage',
+    name: 'Larger storage',
     description: 'Extra 1TB of cloud save',
-    price: '+$2/mo',
+    monthlyPrice: 2,
+    yearlyPrice: 20,
   },
   {
-    value: 'customizable-profile',
-    title: 'Customizable profile',
+    id: 'customizable-profile',
+    name: 'Customizable profile',
     description: 'Custom theme on your profile',
-    price: '+$2/mo',
+    monthlyPrice: 2,
+    yearlyPrice: 20,
   },
 ];
 
-const AddOnSelector = () => {
-  const [selectedAddOns, setSelectedAddOns] = useState<Set<string>>(new Set());
+const formatPrice = (price: number, cycle: BillingCycle) =>
+  cycle === 'monthly' ? `+$${price}/mo` : `+$${price}/yr`;
 
-  const handleChange = (value: string) => {
-    setSelectedAddOns((prev) => {
-      const next = new Set(prev);
-      if (next.has(value)) {
-        next.delete(value);
-      } else {
-        next.add(value);
-      }
-      return next;
-    });
+const AddOnSelector = ({
+  addOnIds,
+  setAddOnIds,
+  billingCycle,
+}: AddOnSelectorProps) => {
+  const handleChange = (id: AddOnId) => {
+    setAddOnIds((prev) =>
+      prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id],
+    );
   };
 
   return (
@@ -43,12 +52,15 @@ const AddOnSelector = () => {
       <legend className={styles.legend}>Select add-ons</legend>
       {ADD_ONS.map((addOn) => (
         <AddOnOption
-          key={addOn.value}
-          value={addOn.value}
-          title={addOn.title}
+          key={addOn.id}
+          id={addOn.id}
+          title={addOn.name}
           description={addOn.description}
-          price={addOn.price}
-          checked={selectedAddOns.has(addOn.value)}
+          price={formatPrice(
+            billingCycle === 'monthly' ? addOn.monthlyPrice : addOn.yearlyPrice,
+            billingCycle,
+          )}
+          checked={addOnIds.includes(addOn.id)}
           onChange={handleChange}
         />
       ))}

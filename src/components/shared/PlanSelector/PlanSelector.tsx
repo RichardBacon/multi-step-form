@@ -1,46 +1,58 @@
+import { type BillingCycle, type Plan, type PlanId } from '../../../types';
 import PlanOption from '../PlanOption/PlanOption';
 import styles from './PlanSelector.module.css';
 
 interface PlanSelectorProps {
-  selectedPlan: string;
-  setSelectedPlan: (value: string) => void;
+  planId: PlanId;
+  setPlanId: (planId: PlanId) => void;
+  billingCycle: BillingCycle;
 }
 
-const PLANS = [
+const PLANS: Plan[] = [
   {
-    value: 'arcade',
-    title: 'Arcade',
-    price: '$9/mo',
-    iconImageSrc: '/assets/images/icon-arcade.svg',
+    id: 'arcade',
+    name: 'Arcade',
+    monthlyPrice: 9,
+    yearlyPrice: 90,
   },
   {
-    value: 'advanced',
-    title: 'Advanced',
-    price: '$12/mo',
-    iconImageSrc: '/assets/images/icon-advanced.svg',
+    id: 'advanced',
+    name: 'Advanced',
+    monthlyPrice: 12,
+    yearlyPrice: 120,
   },
   {
-    value: 'pro',
-    title: 'Pro',
-    price: '$15/mo',
-    iconImageSrc: '/assets/images/icon-pro.svg',
+    id: 'pro',
+    name: 'Pro',
+    monthlyPrice: 15,
+    yearlyPrice: 150,
   },
 ];
 
-const PlanSelector = ({ selectedPlan, setSelectedPlan }: PlanSelectorProps) => {
+const formatPrice = (price: number, cycle: BillingCycle) =>
+  cycle === 'monthly' ? `$${price}/mo` : `$${price}/yr`;
+
+const PlanSelector = ({
+  planId,
+  setPlanId,
+  billingCycle,
+}: PlanSelectorProps) => {
   return (
     <fieldset className={styles.root}>
       <legend className={styles.legend}>Select your plan</legend>
       {PLANS.map((plan) => (
         <PlanOption
-          key={plan.value}
+          key={plan.id}
           name="plan"
-          value={plan.value}
-          iconImageSrc={plan.iconImageSrc}
-          title={plan.title}
-          price={plan.price}
-          checked={selectedPlan === plan.value}
-          onChange={setSelectedPlan}
+          value={plan.id}
+          iconImageSrc={`/assets/images/icon-${plan.id}.svg`}
+          title={plan.name}
+          price={formatPrice(
+            billingCycle === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice,
+            billingCycle,
+          )}
+          checked={planId === plan.id}
+          onChange={(value) => setPlanId(value as PlanId)}
         />
       ))}
     </fieldset>

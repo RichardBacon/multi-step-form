@@ -1,15 +1,20 @@
+import { type BillingCycle, type PlanId } from '../../../types';
 import PlanSelector from '../../shared/PlanSelector/PlanSelector';
 import StepHeader from '../../shared/StepHeader/StepHeader';
 import Toggle from '../../shared/Toggle/Toggle';
 
 interface PlanSelectionStepProps {
-  selectedPlan: string;
-  setSelectedPlan: (value: string) => void;
+  planId: PlanId;
+  setPlanId: (planId: PlanId) => void;
+  billingCycle: BillingCycle;
+  setBillingCycle: (cycle: BillingCycle) => void;
 }
 
 const PlanSelectionStep = ({
-  selectedPlan,
-  setSelectedPlan,
+  planId,
+  setPlanId,
+  billingCycle,
+  setBillingCycle,
 }: PlanSelectionStepProps) => {
   return (
     <>
@@ -18,10 +23,18 @@ const PlanSelectionStep = ({
         subheading="You have the option of monthly or yearly billing."
       />
       <PlanSelector
-        selectedPlan={selectedPlan}
-        setSelectedPlan={setSelectedPlan}
+        planId={planId}
+        setPlanId={setPlanId}
+        billingCycle={billingCycle}
       />
-      <Toggle leftLabel="Monthly" rightLabel="Yearly" activeOption="left" />
+      <Toggle
+        leftLabel="Monthly"
+        rightLabel="Yearly"
+        activeOption={billingCycle === 'monthly' ? 'left' : 'right'}
+        onChange={(option) =>
+          setBillingCycle(option === 'left' ? 'monthly' : 'yearly')
+        }
+      />
     </>
   );
 };

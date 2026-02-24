@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { type PersonalInfo } from '../../../types';
+import {
+  type AddOnId,
+  type BillingCycle,
+  type PersonalInfo,
+  type PlanId,
+} from '../../../types';
 import StepLayout from '../StepLayout/StepLayout';
 import StepProgress from '../StepProgress/StepProgress';
 import styles from './MultiStepForm.module.css';
@@ -11,7 +16,9 @@ const MultiStepForm = () => {
     email: '',
     phone: '',
   });
-  const [selectedPlan, setSelectedPlan] = useState('arcade');
+  const [planId, setPlanId] = useState<PlanId>('arcade');
+  const [billingCycle, setBillingCycle] = useState<BillingCycle>('monthly');
+  const [addOnIds, setAddOnIds] = useState<AddOnId[]>([]);
 
   const handleNextStep = () => {
     setCurrentStep((s) => s + 1);
@@ -30,8 +37,12 @@ const MultiStepForm = () => {
         onBackStep={handleBackStep}
         personalInfo={personalInfo}
         setPersonalInfo={setPersonalInfo}
-        selectedPlan={selectedPlan}
-        setSelectedPlan={setSelectedPlan}
+        planId={planId}
+        setPlanId={setPlanId}
+        billingCycle={billingCycle}
+        setBillingCycle={setBillingCycle}
+        addOnIds={addOnIds}
+        setAddOnIds={setAddOnIds}
       />
     </div>
   );

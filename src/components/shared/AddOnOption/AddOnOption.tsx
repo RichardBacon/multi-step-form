@@ -1,19 +1,20 @@
+import { type AddOnId } from '../../../types';
 import styles from './AddOnOption.module.css';
 
 interface AddOnOptionProps {
+  id: AddOnId;
   title: string;
   description: string;
   price: string;
-  value: string;
   checked?: boolean;
-  onChange?: (value: string) => void;
+  onChange?: (id: AddOnId) => void;
 }
 
 const AddOnOption = ({
+  id,
   title,
   description,
   price,
-  value,
   checked = false,
   onChange,
 }: AddOnOptionProps) => {
@@ -22,9 +23,9 @@ const AddOnOption = ({
       <input
         type="checkbox"
         className={styles.checkbox}
-        value={value}
+        value={id}
         checked={checked}
-        onChange={() => onChange?.(value)}
+        onChange={() => onChange?.(id)}
       />
       <div className={styles.text}>
         <span className={styles.title}>{title}</span>
