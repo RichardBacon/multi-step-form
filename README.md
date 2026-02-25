@@ -1,73 +1,58 @@
-# React + TypeScript + Vite
+# Multi-Step Form
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A multi-step subscription form built as a portfolio project to demonstrate component design, state management, validation UX, and accessibility in React.
 
-Currently, two official plugins are available:
+Based on the [Frontend Mentor Multi-step Form challenge](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Live Demo
 
-## React Compiler
+[Multi-Step Form](https://multi-step-form-uk.vercel.app/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What It Demonstrates
 
-## Expanding the ESLint configuration
+- **Wizard flow** — linear step progression with one deliberate non-linear escape (changing a plan from the summary screen)
+- **Validation UX** — errors surface only on first "Next" attempt, then revalidate live (debounced) so users aren't interrupted while typing
+- **Accessibility** — semantic HTML, `aria-invalid`, `aria-describedby` on error fields, keyboard navigation, and focus management on step transitions
+- **Design-before-code** — the component hierarchy, state ownership, data flow, and validation behaviour were all specified in `[docs/thinking-in-react.md](docs/thinking-in-react.md)` before a line of implementation was written
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Tool                              | Why                                                                                                                                         |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **React 19**                      | Component model maps naturally to a wizard — each step is a self-contained unit with clearly bounded props and callbacks                    |
+| **TypeScript**                    | Catches shape mismatches at the seams between components (e.g. `FormData`, `Plan`, `AddOn` types are the contract between wizard and steps) |
+| **Vite**                          | Fast dev server and build tooling with minimal config                                                                                       |
+| **CSS Modules**                   | Scoped styles without a runtime — keeps each component's styles co-located and avoids class name collisions                                 |
+| **clsx**                          | Lightweight conditional className utility                                                                                                   |
+| **Vitest + Testing Library**      | Unit and integration tests for validation logic and step interactions; co-located with the source they test                                 |
+| **ESLint + Prettier + Stylelint** | Consistent code style enforced at the tool level, not by convention                                                                         |
+| **Husky + commitlint**            | Conventional commits enforced pre-push; keeps the git log readable                                                                          |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Running Locally
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+git clone https://github.com/your-username/multi-step-form.git
+cd multi-step-form
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Other useful commands:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+npm test             # run tests in watch mode
+npm run check        # format check + lint + typecheck + tests (CI equivalent)
+npm run build        # production build
+npm run preview      # preview the production build locally
 ```
+
+## Architecture & Design Decisions
+
+The implementation follows decisions made upfront in `[docs/thinking-in-react.md](docs/thinking-in-react.md)`. Key choices:
+
+- `**MultiStepForm` owns all wizard state — `currentStep`, `personalInfo`, `planId`, `billingCycle`, and `addOnIds`. Step components receive slices of this state as props and communicate back via callbacks (`onNext`, `onBack`, `onPersonalInfoChange`, etc.). No Context, no external store — prop drilling is appropriate at this scale.
+- **Derived values are computed, not stored** — total cost, summary rows, and per-step validity are pure functions called at render time, avoiding sync bugs.
+- **Validation is centralised** — `validateStep()` runs in `MultiStepForm` when `onNext()` is invoked. Steps don't decide whether they're valid; they only display error state passed to them.
+- **Submission is a callback** — `onSubmit(formData)` is provided by the parent. The form is agnostic to what happens next (API call, routing, analytics), making it portable and easily testable.
+
+See `[docs/thinking-in-react.md](docs/thinking-in-react.md)` for the full component hierarchy, data model, and reasoning.
