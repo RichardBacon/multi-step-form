@@ -1,3 +1,4 @@
+import { type RefObject } from 'react';
 import { type AddOnId, type BillingCycle, type PlanId } from '../../../types';
 import StepHeader from '../../shared/StepHeader/StepHeader';
 import SummaryContent from '../../shared/SummaryContent/SummaryContent';
@@ -8,6 +9,7 @@ interface SummaryStepProps {
   billingCycle: BillingCycle;
   addOnIds: AddOnId[];
   onGoToStep: (step: 1 | 2 | 3 | 4) => void;
+  headingRef?: RefObject<HTMLHeadingElement | null>;
 }
 
 const SummaryStep = ({
@@ -15,10 +17,12 @@ const SummaryStep = ({
   billingCycle,
   addOnIds,
   onGoToStep,
+  headingRef,
 }: SummaryStepProps) => {
   return (
     <>
       <StepHeader
+        ref={headingRef}
         heading="Finishing up"
         subheading="Double check everything looks OK before confirming."
       />

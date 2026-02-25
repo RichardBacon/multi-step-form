@@ -6,6 +6,18 @@
   font-size: 0.8rem;
 }
 
+.srOnly {
+  position: absolute;
+  margin: -1px;
+  border-width: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(100%);
+}
+
 .icon {
   display: flex;
   align-items: center;

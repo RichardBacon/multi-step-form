@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   type AddOnId,
   type BillingCycle,
@@ -52,12 +52,24 @@ const StepLayout = ({
     {},
   );
 
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    headingRef.current?.focus();
+  }, [currentStep]);
+
   const errors = getPersonalInfoErrors(personalInfo);
   const showErrors = !!attemptedSteps[currentStep];
 
   const validatePersonalInfo = () => {
     setAttemptedSteps((prev) => ({ ...prev, [currentStep]: true }));
     return isPersonalInfoValid(personalInfo);
+  };
+
+  const handlePersonalInfoSubmit = () => {
+    if (validatePersonalInfo()) {
+      onNextStep();
+    }
   };
 
   return (
@@ -76,6 +88,8 @@ const StepLayout = ({
               personalInfo={personalInfo}
               onPersonalInfoChange={onPersonalInfoChange}
               errors={showErrors ? errors : {}}
+              headingRef={headingRef}
+              onSubmit={handlePersonalInfoSubmit}
             />
           )}
           {currentStep === 2 && (
@@ -84,6 +98,7 @@ const StepLayout = ({
               onSelectPlan={onSelectPlan}
               billingCycle={billingCycle}
               onSetBillingCycle={onSetBillingCycle}
+              headingRef={headingRef}
             />
           )}
           {currentStep === 3 && (
@@ -91,6 +106,7 @@ const StepLayout = ({
               addOnIds={addOnIds}
               onToggleAddOn={onToggleAddOn}
               billingCycle={billingCycle}
+              headingRef={headingRef}
             />
           )}
           {currentStep === 4 && (
@@ -99,11 +115,12 @@ const StepLayout = ({
               billingCycle={billingCycle}
               addOnIds={addOnIds}
               onGoToStep={onGoToStep}
+              headingRef={headingRef}
             />
           )}
         </Step>
       ) : (
-        <ThankYouStep />
+        <ThankYouStep headingRef={headingRef} />
       )}
     </div>
   );

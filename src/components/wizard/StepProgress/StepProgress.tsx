@@ -25,17 +25,23 @@ interface StepProgressProps {
 }
 
 const StepProgress = ({ currentStep }: StepProgressProps) => {
+  const activeStep = Math.min(currentStep, 4);
+
   return (
-    <div className={styles.root}>
-      {steps.map((step) => (
-        <StepIndicator
-          key={step.id}
-          step={step.id}
-          title={step.title}
-          active={step.id === Math.min(currentStep, 4)}
-        />
-      ))}
-    </div>
+    <nav aria-label="Form progress">
+      <ol className={styles.root}>
+        {steps.map((step) => (
+          <li key={step.id}>
+            <StepIndicator
+              step={step.id}
+              title={step.title}
+              active={step.id === activeStep}
+              completed={step.id < activeStep}
+            />
+          </li>
+        ))}
+      </ol>
+    </nav>
   );
 };
 

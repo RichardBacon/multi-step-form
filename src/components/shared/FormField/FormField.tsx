@@ -29,11 +29,15 @@ const FormField = ({
         <label className={styles.label} htmlFor={name}>
           {label}
         </label>
-        {hasError && (
-          <span id={errorId} className={styles.error} aria-live="polite">
-            {error}
-          </span>
-        )}
+        <span
+          id={errorId}
+          className={styles.error}
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
+          {error}
+        </span>
       </div>
       <input
         className={`${styles.input} ${hasError ? styles.inputError : ''}`}
@@ -44,7 +48,7 @@ const FormField = ({
         value={value}
         onChange={onChange}
         aria-invalid={hasError}
-        aria-describedby={hasError ? errorId : undefined}
+        aria-describedby={errorId}
       />
     </div>
   );

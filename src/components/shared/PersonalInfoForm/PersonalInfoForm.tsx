@@ -1,4 +1,4 @@
-import { type ChangeEvent } from 'react';
+import { type ChangeEvent, type FormEvent } from 'react';
 import { type PersonalInfo } from '../../../types';
 import FormField from '../FormField/FormField';
 import styles from './PersonalInfoForm.module.css';
@@ -7,19 +7,26 @@ interface PersonalInfoFormProps {
   personalInfo: PersonalInfo;
   onPersonalInfoChange: (field: keyof PersonalInfo, value: string) => void;
   errors: Partial<Record<keyof PersonalInfo, string>>;
+  onSubmit?: () => void;
 }
 
 const PersonalInfoForm = ({
   personalInfo,
   onPersonalInfoChange,
   errors,
+  onSubmit,
 }: PersonalInfoFormProps) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onPersonalInfoChange(e.target.name as keyof PersonalInfo, e.target.value);
   };
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onSubmit?.();
+  };
+
   return (
-    <form className={styles.root}>
+    <form className={styles.root} onSubmit={handleSubmit}>
       <FormField
         label="Name"
         type="text"

@@ -41,6 +41,6 @@ export async function advancePastStep1(
 
 export async function advancePastStep2Yearly(user: UserEvent) {
   await advancePastStep1(user);
-  await user.click(screen.getByRole('button', { name: /yearly/i }));
+  await user.click(screen.getByRole('switch', { name: /yearly/i }));
   await user.click(screen.getByRole('button', { name: /next step/i }));
 }

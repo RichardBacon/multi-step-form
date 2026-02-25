@@ -130,7 +130,7 @@ describe('MultiStepForm', () => {
       renderForm();
 
       await advancePastStep1(user);
-      await user.click(screen.getByRole('button', { name: /yearly/i }));
+      await user.click(screen.getByRole('switch', { name: /yearly/i }));
 
       expect(screen.getByText('$90/yr')).toBeInTheDocument();
     });

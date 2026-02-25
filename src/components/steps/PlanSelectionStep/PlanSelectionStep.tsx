@@ -1,3 +1,4 @@
+import { type RefObject } from 'react';
 import { type BillingCycle, type PlanId } from '../../../types';
 import PlanSelector from '../../shared/PlanSelector/PlanSelector';
 import StepHeader from '../../shared/StepHeader/StepHeader';
@@ -8,6 +9,7 @@ interface PlanSelectionStepProps {
   onSelectPlan: (planId: PlanId) => void;
   billingCycle: BillingCycle;
   onSetBillingCycle: (cycle: BillingCycle) => void;
+  headingRef?: RefObject<HTMLHeadingElement | null>;
 }
 
 const PlanSelectionStep = ({
@@ -15,10 +17,12 @@ const PlanSelectionStep = ({
   onSelectPlan,
   billingCycle,
   onSetBillingCycle,
+  headingRef,
 }: PlanSelectionStepProps) => {
   return (
     <>
       <StepHeader
+        ref={headingRef}
         heading="Select your plan"
         subheading="You have the option of monthly or yearly billing."
       />
