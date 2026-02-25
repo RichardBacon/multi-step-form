@@ -48,13 +48,15 @@ const StepLayout = ({
   addOnIds,
   onToggleAddOn,
 }: StepLayoutProps) => {
-  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
+  const [attemptedSteps, setAttemptedSteps] = useState<Record<number, boolean>>(
+    {},
+  );
 
   const errors = getPersonalInfoErrors(personalInfo);
-  const showErrors = attemptedSubmit;
+  const showErrors = !!attemptedSteps[currentStep];
 
   const validatePersonalInfo = () => {
-    setAttemptedSubmit(true);
+    setAttemptedSteps((prev) => ({ ...prev, [currentStep]: true }));
     return isPersonalInfoValid(personalInfo);
   };
 
