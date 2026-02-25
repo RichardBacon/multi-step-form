@@ -79,9 +79,14 @@ const StepLayout = ({
           showBack={currentStep > 1}
           showNext
           nextLabel={currentStep === 4 ? 'Confirm' : 'Next Step'}
-          onNextStep={currentStep === 4 ? onSubmit : onNextStep}
+          onNextStep={
+            currentStep === 1
+              ? handlePersonalInfoSubmit
+              : currentStep === 4
+                ? onSubmit
+                : onNextStep
+          }
           onBackStep={onBackStep}
-          validateStep={currentStep === 1 ? validatePersonalInfo : undefined}
         >
           {currentStep === 1 && (
             <PersonalInfoStep
