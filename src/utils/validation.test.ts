@@ -61,6 +61,14 @@ describe('isValidPhone', () => {
     expect(isValidPhone('(123)456789')).toBe(true);
   });
 
+  it('accepts an international number with country code', () => {
+    expect(isValidPhone('+44 7911 123456')).toBe(true);
+  });
+
+  it('accepts a US number in standard format', () => {
+    expect(isValidPhone('+1 (555) 123-4567')).toBe(true);
+  });
+
   it('rejects a number that is too short', () => {
     expect(isValidPhone('12345')).toBe(false);
   });

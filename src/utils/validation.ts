@@ -3,8 +3,10 @@ import { type PersonalInfo } from '../types';
 export const isValidEmail = (value: string): boolean =>
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
-export const isValidPhone = (value: string): boolean =>
-  /^\+?[\d\s\-().]{10,11}$/.test(value.replace(/\s/g, ''));
+export const isValidPhone = (value: string): boolean => {
+  const digits = value.replace(/[\s\-().+]/g, '');
+  return /^\d{7,15}$/.test(digits);
+};
 
 export const getPersonalInfoErrors = (
   info: PersonalInfo,
