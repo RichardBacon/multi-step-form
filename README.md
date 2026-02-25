@@ -1,6 +1,6 @@
 # Multi-Step Form
 
-A multi-step subscription form built as a portfolio project to demonstrate component design, state management, validation UX, and accessibility in React.
+A multi-step subscription form built to demonstrate component design, state management, validation UX, and accessibility in React.
 
 Based on the [Frontend Mentor Multi-step Form challenge](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ).
 
@@ -11,9 +11,9 @@ Based on the [Frontend Mentor Multi-step Form challenge](https://www.frontendmen
 ## What It Demonstrates
 
 - **Wizard flow** — linear step progression with one deliberate non-linear escape (changing a plan from the summary screen)
-- **Validation UX** — errors surface only on first "Next" attempt, then revalidate live (debounced) so users aren't interrupted while typing
+- **Validation UX** — errors surface only on first "Next" attempt, then revalidate live as the user types so corrections are confirmed immediately
 - **Accessibility** — semantic HTML, `aria-invalid`, `aria-describedby` on error fields, keyboard navigation, and focus management on step transitions
-- **Design-before-code** — the component hierarchy, state ownership, data flow, and validation behaviour were all specified in `[docs/thinking-in-react.md](docs/thinking-in-react.md)` before a line of implementation was written
+- **Design-before-code** — the component hierarchy, state ownership, data flow, and validation behaviour were all specified in [docs/thinking-in-react.md](docs/thinking-in-react.md) before a line of implementation was written
 
 ## Tech Stack
 
@@ -31,7 +31,7 @@ Based on the [Frontend Mentor Multi-step Form challenge](https://www.frontendmen
 ## Running Locally
 
 ```bash
-git clone https://github.com/your-username/multi-step-form.git
+git clone https://github.com/RichardBacon/multi-step-form.git
 cd multi-step-form
 npm install
 npm run dev
@@ -50,9 +50,9 @@ npm run preview      # preview the production build locally
 
 The implementation follows decisions made upfront in `[docs/thinking-in-react.md](docs/thinking-in-react.md)`. Key choices:
 
-- `**MultiStepForm` owns all wizard state — `currentStep`, `personalInfo`, `planId`, `billingCycle`, and `addOnIds`. Step components receive slices of this state as props and communicate back via callbacks (`onNext`, `onBack`, `onPersonalInfoChange`, etc.). No Context, no external store — prop drilling is appropriate at this scale.
+- **MultiStepForm** owns all wizard state — `currentStep`, `personalInfo`, `planId`, `billingCycle`, and `addOnIds`. Step components receive slices of this state as props and communicate back via callbacks (`onNext`, `onBack`, `onPersonalInfoChange`, etc.). No Context, no external store — prop drilling is appropriate at this scale.
 - **Derived values are computed, not stored** — total cost, summary rows, and per-step validity are pure functions called at render time, avoiding sync bugs.
 - **Validation is centralised** — `validateStep()` runs in `MultiStepForm` when `onNext()` is invoked. Steps don't decide whether they're valid; they only display error state passed to them.
 - **Submission is a callback** — `onSubmit(formData)` is provided by the parent. The form is agnostic to what happens next (API call, routing, analytics), making it portable and easily testable.
 
-See `[docs/thinking-in-react.md](docs/thinking-in-react.md)` for the full component hierarchy, data model, and reasoning.
+See [docs/thinking-in-react.md](docs/thinking-in-react.md) for the full component hierarchy, data model, and reasoning.
