@@ -4,6 +4,7 @@ interface PlanOptionProps {
   iconImageSrc: string;
   title: string;
   price: string;
+  promoText?: string;
   name: string;
   value: string;
   checked?: boolean;
@@ -14,6 +15,7 @@ const PlanOption = ({
   iconImageSrc,
   title,
   price,
+  promoText,
   name,
   value,
   checked = false,
@@ -23,6 +25,7 @@ const PlanOption = ({
     <label className={styles.root}>
       <span className={styles.visuallyHidden}>
         {title}, {price}
+        {promoText ? `, ${promoText}` : ''}
       </span>
       <input
         className={styles.input}
@@ -36,6 +39,7 @@ const PlanOption = ({
       <div className={styles.text} aria-hidden="true">
         <span className={styles.title}>{title}</span>
         <span className={styles.price}>{price}</span>
+        {promoText && <span className={styles.promo}>{promoText}</span>}
       </div>
     </label>
   );

@@ -31,6 +31,7 @@ const PlanSelector = ({
             billingCycle === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice,
             billingCycle,
           )}
+          promoText={billingCycle === 'yearly' ? '2 months free' : undefined}
           checked={planId === plan.id}
           onChange={(value) => onSelectPlan(value as PlanId)}
         />
