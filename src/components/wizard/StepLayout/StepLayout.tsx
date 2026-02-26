@@ -4,6 +4,7 @@ import {
   type BillingCycle,
   type PersonalInfo,
   type PlanId,
+  type WizardStep,
 } from '../../../types';
 import {
   getPersonalInfoErrors,
@@ -18,10 +19,10 @@ import Step from '../Step/Step';
 import styles from './StepLayout.module.css';
 
 interface StepLayoutProps {
-  currentStep: number;
+  currentStep: WizardStep;
   onNextStep: () => void;
   onBackStep: () => void;
-  onGoToStep: (step: 1 | 2 | 3 | 4) => void;
+  onGoToStep: (step: WizardStep) => void;
   onSubmit: () => void;
   personalInfo: PersonalInfo;
   onPersonalInfoChange: (field: keyof PersonalInfo, value: string) => void;
@@ -48,9 +49,15 @@ const StepLayout = ({
   addOnIds,
   onToggleAddOn,
 }: StepLayoutProps) => {
-  const [attemptedSteps, setAttemptedSteps] = useState<Record<number, boolean>>(
-    {},
-  );
+  const [attemptedSteps, setAttemptedSteps] = useState<
+    Record<WizardStep, boolean>
+  >({
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+  });
 
   const headingRef = useRef<HTMLHeadingElement>(null);
 

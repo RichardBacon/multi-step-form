@@ -34,3 +34,5 @@ export type FormSubmission = {
   billingCycle: BillingCycle;
   addOnIds: AddOnId[];
 };
+
+export type WizardStep = 1 | 2 | 3 | 4 | 5;

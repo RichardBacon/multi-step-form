@@ -5,6 +5,7 @@ import {
   type FormSubmission,
   type PersonalInfo,
   type PlanId,
+  type WizardStep,
 } from '../../../types';
 import StepLayout from '../StepLayout/StepLayout';
 import StepProgress from '../StepProgress/StepProgress';
@@ -15,7 +16,7 @@ interface MultiStepFormProps {
 }
 
 const MultiStepForm = ({ onSubmit }: MultiStepFormProps) => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState<WizardStep>(1);
   const [personalInfo, setPersonalInfo] = useState<PersonalInfo>({
     name: '',
     email: '',
@@ -25,9 +26,9 @@ const MultiStepForm = ({ onSubmit }: MultiStepFormProps) => {
   const [billingCycle, setBillingCycle] = useState<BillingCycle>('monthly');
   const [addOnIds, setAddOnIds] = useState<AddOnId[]>([]);
 
-  const handleNextStep = () => setCurrentStep((s) => s + 1);
-  const handleBackStep = () => setCurrentStep((s) => s - 1);
-  const handleGoToStep = (step: 1 | 2 | 3 | 4) => setCurrentStep(step);
+  const handleNextStep = () => setCurrentStep((s) => (s + 1) as WizardStep);
+  const handleBackStep = () => setCurrentStep((s) => (s - 1) as WizardStep);
+  const handleGoToStep = (step: WizardStep) => setCurrentStep(step);
 
   const handlePersonalInfoChange = (
     field: keyof PersonalInfo,
