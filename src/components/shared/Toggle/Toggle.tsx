@@ -40,7 +40,7 @@ const Toggle = ({
         className={clsx(styles.switch, isLeftActive && styles.left)}
         onClick={handleToggle}
         aria-checked={!isLeftActive}
-        aria-label={`${leftLabel} / ${rightLabel}`}
+        aria-label={`${rightLabel} billing`}
       >
         <div className={styles.thumb} />
       </button>
