@@ -87,6 +87,7 @@ const StepLayout = ({
                 : onNextStep
           }
           onBackStep={onBackStep}
+          validateStep={validatePersonalInfo}
         >
           {currentStep === 1 && (
             <PersonalInfoStep
