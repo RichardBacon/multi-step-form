@@ -1,5 +1,6 @@
 import { PLANS } from '../../../data';
 import { type BillingCycle, type PlanId } from '../../../types';
+import { formatPrice } from '../../../utils/format';
 import PlanOption from '../PlanOption/PlanOption';
 import styles from './PlanSelector.module.css';
 
@@ -8,9 +9,6 @@ interface PlanSelectorProps {
   onSelectPlan: (planId: PlanId) => void;
   billingCycle: BillingCycle;
 }
-
-const formatPrice = (price: number, cycle: BillingCycle) =>
-  cycle === 'monthly' ? `$${price}/mo` : `$${price}/yr`;
 
 const PlanSelector = ({
   planId,

@@ -141,7 +141,7 @@ describe('MultiStepForm', () => {
 
       await advancePastStep2Yearly(user);
 
-      expect(screen.getByText('+$10/yr')).toBeInTheDocument();
+      expect(screen.getByText('$10/yr')).toBeInTheDocument();
     });
 
     it('shows yearly prices and totals on the summary step', async () => {

@@ -1,5 +1,6 @@
 import { ADD_ONS } from '../../../data';
 import { type AddOnId, type BillingCycle } from '../../../types';
+import { formatPrice } from '../../../utils/format';
 import AddOnOption from '../AddOnOption/AddOnOption';
 import styles from './AddOnSelector.module.css';
 
@@ -8,9 +9,6 @@ interface AddOnSelectorProps {
   onToggleAddOn: (addOnId: AddOnId) => void;
   billingCycle: BillingCycle;
 }
-
-const formatPrice = (price: number, cycle: BillingCycle) =>
-  cycle === 'monthly' ? `+$${price}/mo` : `+$${price}/yr`;
 
 const AddOnSelector = ({
   addOnIds,
