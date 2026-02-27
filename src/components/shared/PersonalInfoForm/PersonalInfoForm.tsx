@@ -17,7 +17,10 @@ const PersonalInfoForm = ({
   onSubmit,
 }: PersonalInfoFormProps) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onPersonalInfoChange(e.target.name as keyof PersonalInfo, e.target.value);
+    const field = e.target.name as keyof PersonalInfo;
+    if (field in personalInfo) {
+      onPersonalInfoChange(field, e.target.value);
+    }
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
