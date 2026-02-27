@@ -7,7 +7,7 @@ interface AddOnSelectionStepProps {
   addOnIds: AddOnId[];
   onToggleAddOn: (addOnId: AddOnId) => void;
   billingCycle: BillingCycle;
-  headingRef?: RefObject<HTMLHeadingElement | null>;
+  headingRef?: RefObject<HTMLHeadingElement>;
 }
 
 const AddOnSelectionStep = ({

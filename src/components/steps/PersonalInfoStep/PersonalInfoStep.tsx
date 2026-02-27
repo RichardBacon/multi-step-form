@@ -7,7 +7,7 @@ interface PersonalInfoStepProps {
   personalInfo: PersonalInfo;
   onPersonalInfoChange: (field: keyof PersonalInfo, value: string) => void;
   errors: Partial<Record<keyof PersonalInfo, string>>;
-  headingRef?: RefObject<HTMLHeadingElement | null>;
+  headingRef?: RefObject<HTMLHeadingElement>;
   onSubmit?: () => void;
 }
 

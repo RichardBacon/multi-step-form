@@ -9,7 +9,7 @@ interface PlanSelectionStepProps {
   onSelectPlan: (planId: PlanId) => void;
   billingCycle: BillingCycle;
   onSetBillingCycle: (cycle: BillingCycle) => void;
-  headingRef?: RefObject<HTMLHeadingElement | null>;
+  headingRef?: RefObject<HTMLHeadingElement>;
 }
 
 const PlanSelectionStep = ({

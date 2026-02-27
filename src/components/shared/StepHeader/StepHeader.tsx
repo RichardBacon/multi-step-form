@@ -6,7 +6,7 @@ interface StepHeaderProps {
   subheading?: string;
 }
 
-const StepHeader = forwardRef<HTMLHeadingElement | null, StepHeaderProps>(
+const StepHeader = forwardRef<HTMLHeadingElement, StepHeaderProps>(
   ({ heading, subheading }, ref) => {
     return (
       <div className={styles.root}>

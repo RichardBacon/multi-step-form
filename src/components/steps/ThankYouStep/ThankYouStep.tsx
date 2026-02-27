@@ -3,7 +3,7 @@ import StepHeader from '../../shared/StepHeader/StepHeader';
 import styles from './ThankYouStep.module.css';
 
 interface ThankYouStepProps {
-  headingRef?: RefObject<HTMLHeadingElement | null>;
+  headingRef?: RefObject<HTMLHeadingElement>;
 }
 
 const ThankYouStep = ({ headingRef }: ThankYouStepProps) => {

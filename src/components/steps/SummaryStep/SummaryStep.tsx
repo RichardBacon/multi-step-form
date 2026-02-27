@@ -9,7 +9,7 @@ interface SummaryStepProps {
   billingCycle: BillingCycle;
   addOnIds: AddOnId[];
   onGoToStep: (step: 1 | 2 | 3 | 4) => void;
-  headingRef?: RefObject<HTMLHeadingElement | null>;
+  headingRef?: RefObject<HTMLHeadingElement>;
 }
 
 const SummaryStep = ({

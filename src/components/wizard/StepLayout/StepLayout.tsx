@@ -30,7 +30,7 @@ interface StepLayoutProps {
   addOnIds: AddOnId[];
   onToggleAddOn: (addOnId: AddOnId) => void;
   validatePersonalInfo: () => boolean;
-  headingRef: RefObject<HTMLHeadingElement | null>;
+  headingRef: RefObject<HTMLHeadingElement>;
   errors: Partial<Record<keyof PersonalInfo, string>>;
   showErrors: boolean;
 }
