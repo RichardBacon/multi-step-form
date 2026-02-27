@@ -12,7 +12,7 @@ Based on the [Frontend Mentor Multi-step Form challenge](https://www.frontendmen
 
 - **Wizard flow** — linear step progression with one deliberate non-linear escape (changing a plan from the summary screen)
 - **Validation UX** — errors surface only on first "Next" attempt, then revalidate live as the user types so corrections are confirmed immediately
-- **Accessibility** — semantic HTML, `aria-invalid`, `aria-describedby` on error fields, keyboard navigation, and focus management on step transitions
+- **Accessibility** — semantic HTML, `aria-invalid`, `aria-describedby` on error fields, keyboard navigation, and focus management on step transitions; verified at three layers: `eslint-plugin-jsx-a11y` for static analysis, `vitest-axe` for runtime axe-core assertions, and explicit focus management tests
 - **Design-before-code** — the component hierarchy, state ownership, data flow, and validation behaviour were all specified in [docs/thinking-in-react.md](docs/thinking-in-react.md) before a line of implementation was written
 
 ## Tech Stack
@@ -25,6 +25,7 @@ Based on the [Frontend Mentor Multi-step Form challenge](https://www.frontendmen
 | **CSS Modules**                   | Scoped styles without a runtime — keeps each component's styles co-located and avoids class name collisions                                 |
 | **clsx**                          | Lightweight conditional className utility                                                                                                   |
 | **Vitest + Testing Library**      | Unit and integration tests for validation logic and step interactions; co-located with the source they test                                 |
+| **vitest-axe**                    | Runs axe-core accessibility rules against rendered components to catch ARIA violations and semantic issues at test time                     |
 | **ESLint + Prettier + Stylelint** | Consistent code style enforced at the tool level, not by convention                                                                         |
 | **Husky + commitlint**            | Conventional commits enforced pre-push; keeps the git log readable                                                                          |
 

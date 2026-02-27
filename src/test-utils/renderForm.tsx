@@ -17,8 +17,8 @@ const DEFAULT_PERSONAL_INFO: Required<PersonalInfoData> = {
 
 export function renderForm() {
   const onSubmit = vi.fn();
-  render(<MultiStepForm onSubmit={onSubmit} />);
-  return { onSubmit };
+  const { container } = render(<MultiStepForm onSubmit={onSubmit} />);
+  return { onSubmit, container };
 }
 
 export async function fillPersonalInfo(

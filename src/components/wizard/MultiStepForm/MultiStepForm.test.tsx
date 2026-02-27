@@ -1,6 +1,7 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
+import { axe } from 'vitest-axe';
 import {
   advancePastStep1,
   advancePastStep2Yearly,
@@ -286,6 +287,38 @@ describe('MultiStepForm', () => {
       expect(
         screen.queryByRole('button', { name: /go back/i }),
       ).not.toBeInTheDocument();
+    });
+  });
+
+  describe('Accessibility', () => {
+    it('has no axe violations on the initial step', async () => {
+      const { container } = renderForm();
+      expect(await axe(container)).toHaveNoViolations();
+    });
+  });
+
+  describe('Focus management', () => {
+    it('moves focus to the step heading after advancing to step 2', async () => {
+      const user = userEvent.setup();
+      renderForm();
+
+      await advancePastStep1(user);
+
+      expect(
+        screen.getByRole('heading', { name: /select your plan/i }),
+      ).toHaveFocus();
+    });
+
+    it('moves focus to the step heading after navigating back', async () => {
+      const user = userEvent.setup();
+      renderForm();
+
+      await advancePastStep1(user);
+      await user.click(screen.getByRole('button', { name: /go back/i }));
+
+      expect(
+        screen.getByRole('heading', { name: /personal info/i }),
+      ).toHaveFocus();
     });
   });
 });
