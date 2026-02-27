@@ -16,7 +16,8 @@ const SummaryContent = ({
   addOnIds,
   onGoToStep,
 }: SummaryContentProps) => {
-  const plan = PLANS.find((p) => p.id === planId)!;
+  const plan = PLANS.find((p) => p.id === planId);
+  if (!plan) throw new Error(`Unknown plan: ${planId}`);
   const selectedAddOns = ADD_ONS.filter((a) => addOnIds.includes(a.id));
   const cycleLabel = billingCycle === 'monthly' ? 'Monthly' : 'Yearly';
   const priceSuffix = billingCycle === 'monthly' ? '/mo' : '/yr';

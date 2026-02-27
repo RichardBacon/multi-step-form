@@ -9,7 +9,8 @@ interface TotalRowProps {
 }
 
 const TotalRow = ({ planId, billingCycle, addOnIds }: TotalRowProps) => {
-  const plan = PLANS.find((p) => p.id === planId)!;
+  const plan = PLANS.find((p) => p.id === planId);
+  if (!plan) throw new Error(`Unknown plan: ${planId}`);
   const selectedAddOns = ADD_ONS.filter((a) => addOnIds.includes(a.id));
   const priceSuffix = billingCycle === 'monthly' ? '/mo' : '/yr';
   const cycleLabel = billingCycle === 'monthly' ? 'per month' : 'per year';
