@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, type RefObject } from 'react';
 import {
   type AddOnId,
   type BillingCycle,
@@ -6,10 +6,6 @@ import {
   type PlanId,
   type WizardStep,
 } from '../../../types';
-import {
-  getPersonalInfoErrors,
-  isPersonalInfoValid,
-} from '../../../utils/validation';
 import AddOnSelectionStep from '../../steps/AddOnSelectionStep/AddOnSelectionStep';
 import PersonalInfoStep from '../../steps/PersonalInfoStep/PersonalInfoStep';
 import PlanSelectionStep from '../../steps/PlanSelectionStep/PlanSelectionStep';
@@ -26,12 +22,17 @@ interface StepLayoutProps {
   onSubmit: () => void;
   personalInfo: PersonalInfo;
   onPersonalInfoChange: (field: keyof PersonalInfo, value: string) => void;
+  onPersonalInfoSubmit: () => void;
   planId: PlanId;
   onSelectPlan: (planId: PlanId) => void;
   billingCycle: BillingCycle;
   onSetBillingCycle: (cycle: BillingCycle) => void;
   addOnIds: AddOnId[];
   onToggleAddOn: (addOnId: AddOnId) => void;
+  validatePersonalInfo: () => boolean;
+  headingRef: RefObject<HTMLHeadingElement | null>;
+  errors: Partial<Record<keyof PersonalInfo, string>>;
+  showErrors: boolean;
 }
 
 const StepLayout = ({
@@ -42,42 +43,21 @@ const StepLayout = ({
   onSubmit,
   personalInfo,
   onPersonalInfoChange,
+  onPersonalInfoSubmit,
   planId,
   onSelectPlan,
   billingCycle,
   onSetBillingCycle,
   addOnIds,
   onToggleAddOn,
+  validatePersonalInfo,
+  headingRef,
+  errors,
+  showErrors,
 }: StepLayoutProps) => {
-  const [attemptedSteps, setAttemptedSteps] = useState<
-    Record<WizardStep, boolean>
-  >({
-    1: false,
-    2: false,
-    3: false,
-    4: false,
-    5: false,
-  });
-
-  const headingRef = useRef<HTMLHeadingElement>(null);
-
   useEffect(() => {
     headingRef.current?.focus();
   }, [currentStep]);
-
-  const errors = getPersonalInfoErrors(personalInfo);
-  const showErrors = !!attemptedSteps[currentStep];
-
-  const validatePersonalInfo = () => {
-    setAttemptedSteps((prev) => ({ ...prev, [currentStep]: true }));
-    return isPersonalInfoValid(personalInfo);
-  };
-
-  const handlePersonalInfoSubmit = () => {
-    if (validatePersonalInfo()) {
-      onNextStep();
-    }
-  };
 
   return (
     <div className={styles.root}>
@@ -88,7 +68,7 @@ const StepLayout = ({
           nextLabel={currentStep === 4 ? 'Confirm' : 'Next Step'}
           onNextStep={
             currentStep === 1
-              ? handlePersonalInfoSubmit
+              ? onPersonalInfoSubmit
               : currentStep === 4
                 ? onSubmit
                 : onNextStep
@@ -102,7 +82,7 @@ const StepLayout = ({
               onPersonalInfoChange={onPersonalInfoChange}
               errors={showErrors ? errors : {}}
               headingRef={headingRef}
-              onSubmit={handlePersonalInfoSubmit}
+              onSubmit={onPersonalInfoSubmit}
             />
           )}
           {currentStep === 2 && (
