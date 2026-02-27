@@ -1,5 +1,6 @@
 import { ADD_ONS, PLANS } from '../../../data';
 import { type AddOnId, type BillingCycle, type PlanId } from '../../../types';
+import { getPlanPrice } from '../../../utils/pricing';
 import Button from '../Button/Button';
 import styles from './SummaryContent.module.css';
 
@@ -21,8 +22,7 @@ const SummaryContent = ({
   const selectedAddOns = ADD_ONS.filter((a) => addOnIds.includes(a.id));
   const cycleLabel = billingCycle === 'monthly' ? 'Monthly' : 'Yearly';
   const priceSuffix = billingCycle === 'monthly' ? '/mo' : '/yr';
-  const planPrice =
-    billingCycle === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice;
+  const planPrice = getPlanPrice(plan, billingCycle);
 
   return (
     <div className={styles.root}>
@@ -41,8 +41,7 @@ const SummaryContent = ({
         </span>
       </div>
       {selectedAddOns.map((addOn) => {
-        const addOnPrice =
-          billingCycle === 'monthly' ? addOn.monthlyPrice : addOn.yearlyPrice;
+        const addOnPrice = getPlanPrice(addOn, billingCycle);
         return (
           <div key={addOn.id} className={styles.addOnSummaryItem}>
             <span className={styles.addOnSummaryItemName}>{addOn.name}</span>

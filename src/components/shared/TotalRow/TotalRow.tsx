@@ -1,5 +1,6 @@
 import { ADD_ONS, PLANS } from '../../../data';
 import { type AddOnId, type BillingCycle, type PlanId } from '../../../types';
+import { getAddOnsTotal, getPlanPrice } from '../../../utils/pricing';
 import styles from './TotalRow.module.css';
 
 interface TotalRowProps {
@@ -15,13 +16,8 @@ const TotalRow = ({ planId, billingCycle, addOnIds }: TotalRowProps) => {
   const priceSuffix = billingCycle === 'monthly' ? '/mo' : '/yr';
   const cycleLabel = billingCycle === 'monthly' ? 'per month' : 'per year';
 
-  const planPrice =
-    billingCycle === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice;
-  const addOnsTotal = selectedAddOns.reduce(
-    (sum, a) =>
-      sum + (billingCycle === 'monthly' ? a.monthlyPrice : a.yearlyPrice),
-    0,
-  );
+  const planPrice = getPlanPrice(plan, billingCycle);
+  const addOnsTotal = getAddOnsTotal(selectedAddOns, billingCycle);
   const total = planPrice + addOnsTotal;
 
   return (
