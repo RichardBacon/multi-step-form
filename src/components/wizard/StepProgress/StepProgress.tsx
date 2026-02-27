@@ -12,7 +12,7 @@ const steps = [
   },
   {
     id: 3,
-    title: 'Add ons',
+    title: 'Add-ons',
   },
   {
     id: 4,
