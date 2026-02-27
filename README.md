@@ -55,4 +55,9 @@ The implementation follows decisions made upfront in `[docs/thinking-in-react.md
 - **Validation is centralised** — `validateStep()` runs in `MultiStepForm` when `onNext()` is invoked. Steps don't decide whether they're valid; they only display error state passed to them.
 - **Submission is a callback** — `onSubmit(formData)` is provided by the parent. The form is agnostic to what happens next (API call, routing, analytics), making it portable and easily testable.
 
-See [docs/thinking-in-react.md](docs/thinking-in-react.md) for the full component hierarchy, data model, and reasoning.
+## Documentation
+
+- [Thinking in React](docs/thinking-in-react.md) — the design decisions that guided the implementation
+- [Requirements](docs/requirements.md) — the user stories that informed the design
+- [Plan](docs/plan.md) — the design decisions that guided the implementation
+- [Project Setup](docs/project-setup.md) — the setup decisions that guided the implementation
